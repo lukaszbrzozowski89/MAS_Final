@@ -10,6 +10,8 @@ import pl.pjatk.s17174.final_project.enums.FlightType;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import static pl.pjatk.s17174.final_project.utils.Utils.*;
+
 /**
  * Class using to store pl.pjatk.s17174.final_project.data about Flight
  * links with:
@@ -25,7 +27,6 @@ import java.time.LocalTime;
  * @see FlightInstance
  */
 public class Flight extends ObjectPlusPlus {
-
     private String numberOfFlight;
     private Airport airportFrom;
     private Airport airportTo;
@@ -40,6 +41,29 @@ public class Flight extends ObjectPlusPlus {
         this.flightType = flightType;
     }
 
+    public FlightInstance createFlightInstance(LocalTime time) throws Exception {
+
+        FlightInstance flightInstance = new FlightInstance(setFlightId() + "_" + time.toString(), time);
+        this.addPart(flightInstanceClass, flightClass, flightInstance);
+        return flightInstance;
+    }
+
+
+    public WeeklySchedule createWeeklySchedule(int day, LocalTime time) throws Exception {
+        WeeklySchedule weeklySchedule = new WeeklySchedule(day, time);
+        this.addPart(flightInstanceClass, flightClass, weeklySchedule);
+        return weeklySchedule;
+    }
+
+    public AdditionalSchedule createAdditionalSchedule(LocalDate date, LocalTime time) throws Exception {
+        AdditionalSchedule additionalSchedule = new AdditionalSchedule(date, time);
+        this.addPart(flightInstanceClass, flightClass, additionalSchedule);
+        return additionalSchedule;
+    }
+
+    private String setFlightId() {
+        return getNumberOfFlight();
+    }
 
     public void cancelFlight() {
         //todo
@@ -85,7 +109,6 @@ public class Flight extends ObjectPlusPlus {
                 ", airportFrom=" + airportFrom +
                 ", airportTo=" + airportTo +
                 ", flightType=" + flightType +
-                ", timeOfFlight=" + timeOfFlight +
                 '}';
     }
 
@@ -94,14 +117,15 @@ public class Flight extends ObjectPlusPlus {
      *
      * @author Lukasz
      */
-    public class FlightInstance {
+    public class FlightInstance extends ObjectPlusPlus {
         private String flightId;
         private FlightStatus flightStatus;
         private LocalTime timeOfStart;
 
-        private FlightInstance(String flightId, FlightStatus flightStatus, LocalTime timeOfStart) {
+        private FlightInstance(String flightId, LocalTime timeOfStart) {
+            super();
             this.flightId = flightId;
-            this.flightStatus = flightStatus;
+            this.flightStatus = FlightStatus.ADDED;
             this.timeOfStart = timeOfStart;
         }
 
@@ -148,11 +172,12 @@ public class Flight extends ObjectPlusPlus {
      *
      * @author Lukasz
      */
-    public class WeeklySchedule {
+    public class WeeklySchedule extends ObjectPlusPlus {
         private int dayOfWeek;
         private LocalTime timeOfFlight;
 
         private WeeklySchedule(int dayOfWeek, LocalTime timeOfFlight) {
+            super();
             this.dayOfWeek = dayOfWeek;
             this.timeOfFlight = timeOfFlight;
         }
@@ -191,11 +216,12 @@ public class Flight extends ObjectPlusPlus {
     /**
      * inner class with private constructor to create composition - additional schedule can't exists without flight
      */
-    public class AdditionalSchedule {
+    public class AdditionalSchedule extends ObjectPlusPlus {
         private LocalDate dayOfStart;
         private LocalTime timeOfFlight;
 
         private AdditionalSchedule(LocalDate dayOfStart, LocalTime timeOfFlight) {
+            super();
             this.dayOfStart = dayOfStart;
             this.timeOfFlight = timeOfFlight;
         }
