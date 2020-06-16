@@ -1,4 +1,4 @@
-package data;
+package pl.pjatk.s17174.final_project.data;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

@@ -2,15 +2,15 @@
  * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
-package data;
+package pl.pjatk.s17174.final_project.data;
 
-import enums.ClassType;
-import enums.ReservationStatus;
+import pl.pjatk.s17174.final_project.enums.ClassType;
+import pl.pjatk.s17174.final_project.enums.ReservationStatus;
 
 import java.time.LocalTime;
 
 /**
- * Class to store data about Reservation
+ * Class to store pl.pjatk.s17174.final_project.data about Reservation
  * links with:
  * 1. Passenger with cardinality 1 - *
  * 2. FlightInstance - 1..* - 1..*

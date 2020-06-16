@@ -2,13 +2,13 @@
  * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
-package enums;
+package pl.pjatk.s17174.final_project.enums;
 
 /**
  * Enum to set Luggage Type
  *
  * @author Lukasz
- * @see data.Luggage
+ * @see pl.pjatk.s17174.final_project.data.Luggage
  */
 public enum LuggageType {
     HAND,

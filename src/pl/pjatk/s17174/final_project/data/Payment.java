@@ -2,15 +2,15 @@
  * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
-package data;
+package pl.pjatk.s17174.final_project.data;
 
-import enums.PaymentMethod;
-import enums.PaymentStatus;
+import pl.pjatk.s17174.final_project.enums.PaymentMethod;
+import pl.pjatk.s17174.final_project.enums.PaymentStatus;
 
 import java.math.BigDecimal;
 
 /**
- * Class to store data about payments
+ * Class to store pl.pjatk.s17174.final_project.data about payments
  * links with Reservation with cardinality 1 - *
  *
  * @see Reservation

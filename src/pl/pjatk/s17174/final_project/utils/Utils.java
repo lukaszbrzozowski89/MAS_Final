@@ -2,9 +2,9 @@
  * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
-package utils;
+package pl.pjatk.s17174.final_project.utils;
 
-import data.*;
+import pl.pjatk.s17174.final_project.data.*;
 
 public interface Utils {
 

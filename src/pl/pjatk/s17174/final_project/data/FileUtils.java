@@ -2,7 +2,7 @@
  * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
-package data;
+package pl.pjatk.s17174.final_project.data;
 
 import java.io.*;
 

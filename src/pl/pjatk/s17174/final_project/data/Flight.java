@@ -2,18 +2,16 @@
  * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
-package data;/*
- * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
- */
+package pl.pjatk.s17174.final_project.data;
 
-import enums.FlightStatus;
-import enums.FlightType;
+import pl.pjatk.s17174.final_project.enums.FlightStatus;
+import pl.pjatk.s17174.final_project.enums.FlightType;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
- * Class using to store data about Flight
+ * Class using to store pl.pjatk.s17174.final_project.data about Flight
  * links with:
  * 1. Airport cardinality - 1..* - 1..*
  * 2. WeeklySchedule - 1 - *

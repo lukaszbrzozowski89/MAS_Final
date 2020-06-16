@@ -2,13 +2,13 @@
  * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
-package enums;
+package pl.pjatk.s17174.final_project.enums;
 
 /**
  * Enum to set flight type
  *
  * @author Lukasz
- * @see data.Flight
+ * @see pl.pjatk.s17174.final_project.data.Flight
  */
 public enum FlightType {
 
