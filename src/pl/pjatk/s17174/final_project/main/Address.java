@@ -2,11 +2,11 @@
  * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
-package pl.pjatk.s17174.final_project.data;
+package pl.pjatk.s17174.final_project.main;
 
 
 /**
- * Class using to store pl.pjatk.s17174.final_project.data about every address
+ * Class using to store data about every address
  * links with Person
  *
  * @author Lukasz

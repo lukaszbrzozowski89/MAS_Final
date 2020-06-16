@@ -2,7 +2,7 @@
  * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
-package pl.pjatk.s17174.final_project.data;
+package pl.pjatk.s17174.final_project.main;
 
 import pl.pjatk.s17174.final_project.enums.FlightStatus;
 import pl.pjatk.s17174.final_project.enums.FlightType;
@@ -13,7 +13,7 @@ import java.time.LocalTime;
 import static pl.pjatk.s17174.final_project.utils.Utils.*;
 
 /**
- * Class using to store pl.pjatk.s17174.final_project.data about Flight
+ * Class using to store data about Flight
  * links with:
  * 1. Airport cardinality - 1..* - 1..*
  * 2. WeeklySchedule - 1 - *

@@ -8,7 +8,7 @@ package pl.pjatk.s17174.final_project.enums;
  * Enum to set Luggage Type
  *
  * @author Lukasz
- * @see pl.pjatk.s17174.final_project.data.Luggage
+ * @see pl.pjatk.s17174.final_project.main.Luggage
  */
 public enum LuggageType {
     HAND,

@@ -2,12 +2,12 @@
  * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
-package pl.pjatk.s17174.final_project.data;
+package pl.pjatk.s17174.final_project.main;
 
 import java.time.LocalDate;
 
 /**
- * Class to create and sore pl.pjatk.s17174.final_project.data about plane
+ * Class to create and store data about plane
  * links with:
  * 1. FlightInstance with cardinality 1..* - 1..*
  * 2. Owner - 0..* - 1

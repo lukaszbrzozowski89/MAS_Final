@@ -2,17 +2,17 @@
  * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
-package pl.pjatk.s17174.final_project.data;
+package pl.pjatk.s17174.final_project.main;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- * Class to create a pilot and store pl.pjatk.s17174.final_project.data about that - inherit from Person
+ * Class to create a pilot and store data about that - inherit from Person
  * links with FlightInstance with cardinality 2 - 1..*
  *
  * @author Lukasz
- * @see pl.pjatk.s17174.final_project.data.Flight.FlightInstance
+ * @see pl.pjatk.s17174.final_project.main.Flight.FlightInstance
  */
 public class Pilot extends Person {
 

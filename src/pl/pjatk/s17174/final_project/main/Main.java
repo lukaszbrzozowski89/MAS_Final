@@ -2,14 +2,13 @@
  * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
-package pl.pjatk.s17174.final_project.data;
+package pl.pjatk.s17174.final_project.main;
 
 import pl.pjatk.s17174.final_project.enums.ClassType;
 import pl.pjatk.s17174.final_project.enums.FlightType;
 import pl.pjatk.s17174.final_project.enums.LuggageType;
 import pl.pjatk.s17174.final_project.enums.PaymentMethod;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 import static pl.pjatk.s17174.final_project.utils.Utils.*;
 
 /**
- * Main class to create Objects & start Application
+ * Main class to create Objects and start Application
  */
 public class Main {
 
@@ -116,6 +115,15 @@ public class Main {
         Payment payment2 = new Payment(2, PaymentMethod.CREDIT_CARD, new BigDecimal(9900));
         Payment payment3 = new Payment(3, PaymentMethod.DEBIT_CARD, new BigDecimal(900));
         Payment payment4 = new Payment(4, PaymentMethod.TRANSFER, new BigDecimal(1108));
+
+        Owner owner1 = new Owner("Fly With Me Airlines");
+        plane1.addLink(ownerClass, planeClass, owner1);
+        plane2.addLink(ownerClass, planeClass, owner1);
+        plane3.addLink(ownerClass, planeClass, owner1);
+        plane4.addLink(ownerClass, planeClass, owner1);
+        plane5.addLink(ownerClass, planeClass, owner1);
+        plane6.addLink(ownerClass, planeClass, owner1);
+        plane7.addLink(ownerClass, planeClass, owner1);
 
 
         Flight.FlightInstance flightInstance1 = flight1.createFlightInstance(LocalTime.of(6, 23));

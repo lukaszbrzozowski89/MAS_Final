@@ -2,12 +2,12 @@
  * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
-package pl.pjatk.s17174.final_project.data;
+package pl.pjatk.s17174.final_project.main;
 
 import pl.pjatk.s17174.final_project.utils.Utils;
 
 /**
- * Class using to store pl.pjatk.s17174.final_project.data about airports used in project
+ * Class using to store data about airports used in project
  * links with Flight with cardinality 1..* - 1..*
  *
  * @author Lukasz

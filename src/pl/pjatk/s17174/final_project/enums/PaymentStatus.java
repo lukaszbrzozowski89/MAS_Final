@@ -8,7 +8,7 @@ package pl.pjatk.s17174.final_project.enums;
  * Enum to set Payment Status
  *
  * @author Lukasz
- * @see pl.pjatk.s17174.final_project.data.Payment
+ * @see pl.pjatk.s17174.final_project.main.Payment
  */
 public enum PaymentStatus {
     STARTED,

@@ -8,7 +8,7 @@ package pl.pjatk.s17174.final_project.enums;
  * Enum to set Flight instance status
  *
  * @author Lukasz
- * @see pl.pjatk.s17174.final_project.data.Flight.FlightInstance
+ * @see pl.pjatk.s17174.final_project.main.Flight.FlightInstance
  */
 public enum FlightStatus {
 

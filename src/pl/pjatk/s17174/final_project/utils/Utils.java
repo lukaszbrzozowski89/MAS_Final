@@ -4,7 +4,7 @@
 
 package pl.pjatk.s17174.final_project.utils;
 
-import pl.pjatk.s17174.final_project.data.*;
+import pl.pjatk.s17174.final_project.main.*;
 
 public interface Utils {
 

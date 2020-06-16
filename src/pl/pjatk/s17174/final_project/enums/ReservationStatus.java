@@ -8,7 +8,7 @@ package pl.pjatk.s17174.final_project.enums;
  * Enum to set Reservation status
  *
  * @author Lukasz
- * @see pl.pjatk.s17174.final_project.data.Reservation
+ * @see pl.pjatk.s17174.final_project.main.Reservation
  */
 public enum ReservationStatus {
 

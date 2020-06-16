@@ -8,7 +8,7 @@ package pl.pjatk.s17174.final_project.enums;
  * Enum to set flight type
  *
  * @author Lukasz
- * @see pl.pjatk.s17174.final_project.data.Flight
+ * @see pl.pjatk.s17174.final_project.main.Flight
  */
 public enum FlightType {
 
