@@ -26,6 +26,14 @@ public class Luggage extends ObjectPlusPlus {
         this.luggageType = luggageType;
     }
 
+    public void addLuggage() {
+        //todo
+    }
+
+    public void removeLuggage() {
+        //todo
+    }
+
     public int getId() {
         return id;
     }

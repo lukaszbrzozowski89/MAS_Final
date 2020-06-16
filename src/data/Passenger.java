@@ -33,6 +33,14 @@ public class Passenger extends Person {
         this.phoneNumber = phoneNumber;
     }
 
+    public void chooseFlight(Flight.FlightInstance flightInstance) {
+        //todo
+    }
+
+    public void chooseSeat(int seat) {
+        //todo
+    }
+
     public int getId() {
         return id;
     }

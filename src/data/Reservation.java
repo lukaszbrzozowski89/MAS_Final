@@ -39,6 +39,34 @@ public class Reservation extends ObjectPlusPlus {
         this.paymentWaitTime = paymentWaitTime;
     }
 
+    public void checkFreeSeats(Flight.FlightInstance flightInstance) {
+        //todo
+    }
+
+    public ReservationStatus checkReservationStatus() {
+        return getStatus();
+    }
+
+    public void checkPaymentStatus() {
+        //todo
+    }
+
+    public void changePaymentStatus() {
+        //todo
+    }
+
+    public void changeReservationStatus(ReservationStatus status) {
+        setStatus(status);
+        //todo
+    }
+
+    public void generateReservationDocs() {
+        //todo
+    }
+
+    public void cancelReservation() {
+        //todo
+    }
 
     public int getId() {
         return id;

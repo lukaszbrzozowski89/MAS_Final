@@ -20,6 +20,10 @@ public class Owner extends ObjectPlusPlus {
         this.name = name;
     }
 
+    public void buyPlane() {
+        //todo
+    }
+
     @Override
     public String toString() {
         return "Owner{" +

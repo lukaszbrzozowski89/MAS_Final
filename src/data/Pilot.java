@@ -28,8 +28,18 @@ public class Pilot extends Person {
         this.dateOfExamsValidity = dateOfExamsValidity;
     }
 
+    public static Pilot checkExamsValidity() {
+        // TODO
+        return null;
+    }
+
     public static int getCounter() {
         return counter;
+    }
+
+    public void addLicense(Plane plane) {
+        licenses.add(plane);
+        // TODO
     }
 
     public int getLicenseId() {

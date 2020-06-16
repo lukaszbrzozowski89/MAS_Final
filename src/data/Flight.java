@@ -43,6 +43,19 @@ public class Flight extends ObjectPlusPlus {
     }
 
 
+    public void cancelFlight() {
+        //todo
+    }
+
+    public void addWeeklySchedule() {
+        //todo
+    }
+
+    public void addAdditionalSchedule() {
+        //todo
+    }
+
+
     public String getNumberOfFlight() {
         return numberOfFlight;
     }
@@ -94,6 +107,22 @@ public class Flight extends ObjectPlusPlus {
             this.timeOfStart = timeOfStart;
         }
 
+        public void cancelFlightInstance() {
+            // TODO
+        }
+
+        public void updateFlightStatus() {
+            // TODO
+        }
+
+        public void updateTimeOfDeparture() {
+            // TODO
+        }
+
+        public void checkSeatsAvailability() {
+            // TODO
+        }
+
         public String getFlightId() {
             return flightId;
         }
@@ -138,6 +167,20 @@ public class Flight extends ObjectPlusPlus {
             return timeOfFlight;
         }
 
+        public void addWeeklySchedule() {
+            // TODO
+        }
+
+        public void deleteWeeklySchedule() {
+            // TODO
+
+        }
+
+        public void editWeeklySchedule() {
+            // TODO
+
+        }
+
         @Override
         public String toString() {
             return "WeeklySchedule{" +
@@ -158,6 +201,17 @@ public class Flight extends ObjectPlusPlus {
             this.dayOfStart = dayOfStart;
             this.timeOfFlight = timeOfFlight;
         }
+
+        public void addAdditionalSchedule() {
+            // TODO
+
+        }
+
+        public void deleteAdditionalSchedule() {
+            // TODO
+
+        }
+
 
         public LocalDate getDayOfStart() {
             return dayOfStart;
