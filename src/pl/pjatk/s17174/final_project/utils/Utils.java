@@ -21,6 +21,7 @@ public interface Utils {
     String flightInstanceClass = Flight.FlightInstance.class.getSimpleName();
     String weeklyScheduleClass = Flight.WeeklySchedule.class.getSimpleName();
     String additionalScheduleClass = Flight.AdditionalSchedule.class.getSimpleName();
+    String reservationClass = Reservation.class.getSimpleName();
 
 }
 
