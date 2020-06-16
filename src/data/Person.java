@@ -1,6 +1,18 @@
+/*
+ * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
+ */
+
+package data;
+
 import java.time.LocalDate;
 
-public abstract class Person extends ObjectPlusPlus{
+/**
+ * Abstract class to inherit from here dta about person
+ *
+ * @author Lukasz
+ */
+
+public abstract class Person extends ObjectPlusPlus {
 
     private String name;
     private String surname;
@@ -8,6 +20,7 @@ public abstract class Person extends ObjectPlusPlus{
     private Address address;
 
     public Person(String name, String surname, LocalDate dateOfBirth, Address address) {
+        super();
         this.name = name;
         this.surname = surname;
         this.dateOfBirth = dateOfBirth;

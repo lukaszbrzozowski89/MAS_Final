@@ -1,11 +1,27 @@
+/*
+ * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
+ */
+
+package data;/*
+ * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
+ */
+
 import enums.LuggageType;
 
+/**
+ * Class used to store data about luggage which can be added by Passenger
+ * links with Passenger with cardinality 0..* - 1..*
+ *
+ * @author Lukasz
+ * @see Passenger
+ */
 public class Luggage extends ObjectPlusPlus {
 
     private int id;
     private LuggageType luggageType;
 
     public Luggage(int id, LuggageType luggageType) {
+        super();
         this.id = id;
         this.luggageType = luggageType;
     }

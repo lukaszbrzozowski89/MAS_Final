@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
+ */
+
+package data;
+
 import java.io.PrintStream;
 import java.io.Serializable;
 import java.util.*;

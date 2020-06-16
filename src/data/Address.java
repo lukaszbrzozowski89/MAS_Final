@@ -1,9 +1,26 @@
-public class Address extends ObjectPlusPlus{
+/*
+ * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
+ */
+
+package data;/*
+ * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
+ */
+
+
+/**
+ * Class using to store data about every address
+ * links with Person
+ *
+ * @author Lukasz
+ * @see Person
+ */
+public class Address extends ObjectPlusPlus {
     protected String city;
     protected String street;
     protected String postalCode;
 
     public Address(String city, String street, String postalCode) {
+        super();
         this.city = city;
         this.street = street;
         this.postalCode = postalCode;

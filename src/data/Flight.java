@@ -1,9 +1,31 @@
+/*
+ * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
+ */
+
+package data;/*
+ * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
+ */
+
 import enums.FlightStatus;
 import enums.FlightType;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * Class using to store data about Flight
+ * links with:
+ * 1. Airport cardinality - 1..* - 1..*
+ * 2. WeeklySchedule - 1 - *
+ * 3. AdditionalSchedule - 1 - *
+ * 4. FlightInstance - 1 - *
+ *
+ * @author Lukasz
+ * @see Airport
+ * @see WeeklySchedule
+ * @see AdditionalSchedule
+ * @see FlightInstance
+ */
 public class Flight extends ObjectPlusPlus {
 
     private String numberOfFlight;
@@ -13,11 +35,13 @@ public class Flight extends ObjectPlusPlus {
     private LocalTime timeOfFlight;
 
     public Flight(String numberOfFlight, Airport airportFrom, Airport airportTo, FlightType flightType) {
+        super();
         this.numberOfFlight = numberOfFlight;
         this.airportFrom = airportFrom;
         this.airportTo = airportTo;
         this.flightType = flightType;
     }
+
 
     public String getNumberOfFlight() {
         return numberOfFlight;
@@ -54,7 +78,11 @@ public class Flight extends ObjectPlusPlus {
                 '}';
     }
 
-
+    /**
+     * Inner class with private constructor to create composition - flight instance can't exits without flight
+     *
+     * @author Lukasz
+     */
     public class FlightInstance {
         private String flightId;
         private FlightStatus flightStatus;
@@ -88,6 +116,11 @@ public class Flight extends ObjectPlusPlus {
         }
     }
 
+    /**
+     * Inner class with private constructor to create composition - weekly schedule can't exists without flight
+     *
+     * @author Lukasz
+     */
     public class WeeklySchedule {
         private int dayOfWeek;
         private LocalTime timeOfFlight;
@@ -114,7 +147,9 @@ public class Flight extends ObjectPlusPlus {
         }
     }
 
-
+    /**
+     * inner class with private constructor to create composition - additional schedule can't exists without flight
+     */
     public class AdditionalSchedule {
         private LocalDate dayOfStart;
         private LocalTime timeOfFlight;

@@ -1,11 +1,20 @@
 /*
- * Copyright (c) 2020
- * Łukasz Brzozowski (s17174) @ PJATK
+ * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
+
+package data;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+
+/**
+ * Class to create a steward and store data about that - inherit from Person
+ * links with FlightInstance with cardinality 1..* - 1..*
+ *
+ * @author Lukasz
+ * @see Flight.FlightInstance
+ */
 public class Steward extends Person {
 
     private static int counter = 1;

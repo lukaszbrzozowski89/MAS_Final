@@ -1,15 +1,28 @@
 /*
- * Copyright (c) 2020
- * Łukasz Brzozowski (s17174) @ PJATK
+ * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
+ */
+
+package data;/*
+ * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
 
 import java.time.LocalDate;
 
+/**
+ * Class which stores data about passenger
+ * links with:
+ * 1. Plane with cardinality 0..1 - 1..*
+ * 2. Luggage with cardinality 0..1 - 1..*
+ *
+ * @author Lukasz
+ * @see Plane
+ * @see Luggage
+ */
 public class Passenger extends Person {
 
-    private int id;
     private static int counter = 1;
+    private int id;
     private String email;
     private String phoneNumber;
 

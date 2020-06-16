@@ -1,10 +1,20 @@
 /*
- * Copyright (c) 2020
- * Łukasz Brzozowski (s17174) @ PJATK
+ * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
+package data;
 
 import java.time.LocalDate;
+
+/**
+ * Class to create and sore data about plane
+ * links with:
+ * 1. FlightInstance with cardinality 1..* - 1..*
+ * 2. Owner - 0..* - 1
+ *
+ * @author Lukasz
+ * @see Flight.FlightInstance
+ */
 
 public class Plane extends ObjectPlusPlus {
 
@@ -17,6 +27,7 @@ public class Plane extends ObjectPlusPlus {
 
 
     public Plane(String name, String model, LocalDate yearOfProduction, int seats, LocalDate dateOfLatestTechnicalReview) {
+        super();
         this.name = name;
         this.model = model;
         this.yearOfProduction = yearOfProduction;

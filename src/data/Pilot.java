@@ -1,11 +1,19 @@
 /*
- * Copyright (c) 2020
- * Łukasz Brzozowski (s17174) @ PJATK
+ * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
+
+package data;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Class to create a pilot and store data about that - inherit from Person
+ * links with FlightInstance with cardinality 2 - 1..*
+ *
+ * @author Lukasz
+ * @see data.Flight.FlightInstance
+ */
 public class Pilot extends Person {
 
     private static int counter = 1;
@@ -17,14 +25,6 @@ public class Pilot extends Person {
         super(name, surname, dateOfBirth, address);
         this.licenseId = licenseId;
         this.licenses = licenses;
-        this.dateOfExamsValidity = dateOfExamsValidity;
-    }
-
-    public void setLicenses(ArrayList<Plane> licenses) {
-        this.licenses = licenses;
-    }
-
-    public void setDateOfExamsValidity(LocalDate dateOfExamsValidity) {
         this.dateOfExamsValidity = dateOfExamsValidity;
     }
 
@@ -40,8 +40,16 @@ public class Pilot extends Person {
         return licenses;
     }
 
+    public void setLicenses(ArrayList<Plane> licenses) {
+        this.licenses = licenses;
+    }
+
     public LocalDate getDateOfExamsValidity() {
         return dateOfExamsValidity;
+    }
+
+    public void setDateOfExamsValidity(LocalDate dateOfExamsValidity) {
+        this.dateOfExamsValidity = dateOfExamsValidity;
     }
 
     @Override

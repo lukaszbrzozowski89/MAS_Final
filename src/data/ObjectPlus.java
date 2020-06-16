@@ -1,3 +1,5 @@
+package data;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -6,6 +8,12 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
+/**
+ * The class which helps with extent management.
+ *
+ * @author Mariusz Trzaska
+ * Fill free to send me any remarks: mtrzaska@pjwstk.edu.pl
+ */
 public class ObjectPlus implements Serializable {
 
     private static final long serialVersionUID = 11112L;
