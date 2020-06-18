@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
+  -->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane xmlns:fx="http://javafx.com/fxml/1" fx:id="flightSummaryPane" maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+      xmlns="http://javafx.com/javafx/10.0.2-internal"
+      fx:controller="pl.pjatk.s17174.final_project.controller.FlightSummaryController">
+  <children>
+    <Label fx:id="hiLabel" layoutX="467.0" layoutY="31.0" text="Cześć Łukasz"/>
+    <ImageView fx:id="loginIV" fitHeight="50.0" fitWidth="50.0" layoutX="536.0" layoutY="14.0" pickOnBounds="true"
+               preserveRatio="true"/>
+    <Label layoutX="43.0" layoutY="64.0" text="Wybrano lot"/>
+    <Label fx:id="passengerDataLabel" layoutX="393.0" layoutY="64.0" prefHeight="17.0" prefWidth="108.0"
+           text="Dane pasażera"/>
+    <Label fx:id="flightFromLabel" layoutX="43.0" layoutY="94.0" text="Warszawa (WAW)"/>
+    <Label fx:id="flightToLabel" layoutX="157.0" layoutY="94.0" text="Paryż (CDG)"/>
+    <Label fx:id="filghtNumberLabelLeft" layoutX="43.0" layoutY="124.0" text="Lot numer"/>
+    <Label fx:id="filghtNumberLabelRight" layoutX="157.0" layoutY="124.0" text="LO333"/>
+    <Label fx:id="dateOfFlightLabelLeft" layoutX="43.0" layoutY="155.0" text="Data wylotu"/>
+    <Label fx:id="dateOfFlightLabelRight" layoutX="157.0" layoutY="155.0" text="07/06/2020"/>
+    <Label fx:id="nameLabelLeft" layoutX="393.0" layoutY="94.0" text="Imię"/>
+    <Label fx:id="nameLabelRight" layoutX="470.0" layoutY="94.0" prefHeight="17.0" prefWidth="108.0" text="Jan"/>
+    <Label fx:id="surnameLabelLeft" layoutX="393.0" layoutY="116.0" text="Nazwisko"/>
+    <Label fx:id="addressLabelRight" layoutX="470.0" layoutY="141.0" prefHeight="17.0" prefWidth="108.0"
+           text="Długa 12, Gdańsk"/>
+    <Label fx:id="surnameLabelRight" layoutX="470.0" layoutY="116.0" prefHeight="17.0" prefWidth="108.0"
+           text="Kowalski"/>
+    <Label fx:id="addressLabelLeft" layoutX="393.0" layoutY="141.0" text="Adres"/>
+    <Label fx:id="emailLabelLeft" layoutX="393.0" layoutY="164.0" text="adres e-mail"/>
+    <Label fx:id="emailLabelRight" layoutX="470.0" layoutY="164.0" prefHeight="17.0" prefWidth="108.0"
+           text="jan@wp.pl"/>
+    <Label fx:id="phoneLabelLeft" layoutX="393.0" layoutY="192.0" text="telefon"/>
+    <Label fx:id="phoneLabelRight" layoutX="470.0" layoutY="192.0" prefHeight="17.0" prefWidth="108.0"
+           text="123456789"/>
+    <Label fx:id="timeOfFlightLabelLeft" layoutX="43.0" layoutY="184.0" text="Godzina wylotu"/>
+    <Label fx:id="timeOfFlightLabelRight" layoutX="157.0" layoutY="184.0" text="10:30"/>
+    <RadioButton fx:id="bussinessClassRB" layoutX="27.0" layoutY="270.0" mnemonicParsing="false" text="Biznes">
+      <toggleGroup>
+        <ToggleGroup fx:id="buttonGroup"/>
+      </toggleGroup>
+    </RadioButton>
+    <RadioButton fx:id="premiumClassRB" layoutX="27.0" layoutY="295.0" mnemonicParsing="false" text="Premium"
+                 toggleGroup="$buttonGroup"/>
+    <RadioButton fx:id="economyClassRB" layoutX="27.0" layoutY="321.0" mnemonicParsing="false" selected="true"
+                 text="Economy" toggleGroup="$buttonGroup"/>
+    <Button fx:id="searchSeatsButton" layoutX="28.0" layoutY="353.0" mnemonicParsing="false"
+            onAction="#searchSeatsAction" prefHeight="25.0" prefWidth="114.0" text="Szukaj miejsca"/>
+    <Label layoutX="29.0" layoutY="245.0" text="Wybierz klasę:"/>
+  </children>
+</Pane>

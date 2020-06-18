@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
+  -->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" fx:id="reservationPane" maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+      xmlns="http://javafx.com/javafx/10.0.2-internal"
+      fx:controller="pl.pjatk.s17174.final_project.controller.ReservationController">
+    <children>
+        <Label fx:id="airportFromLabel" layoutX="28.0" layoutY="69.0" prefHeight="17.0" prefWidth="145.0"
+               text="Wybierz lotnisko wylotowe">
+            <font>
+                <Font name="Arial" size="12.0"/>
+            </font>
+        </Label>
+        <Label fx:id="airportToLabel" layoutX="228.0" layoutY="69.0" text="Wybierz lotnisko docelowe">
+            <font>
+                <Font name="Arial" size="12.0"/>
+            </font>
+        </Label>
+        <ComboBox fx:id="airportFromCB" layoutX="28.0" layoutY="86.0" prefHeight="25.0" prefWidth="145.0"/>
+        <ComboBox fx:id="airportToCB" layoutX="228.0" layoutY="86.0" prefHeight="25.0" prefWidth="145.0"/>
+        <DatePicker fx:id="flightDatePicker" layoutX="28.0" layoutY="172.0" prefHeight="25.0" prefWidth="145.0"/>
+        <Label fx:id="flightDateLabel" layoutX="28.0" layoutY="155.0" text="Wybierz datę wylotu">
+            <font>
+                <Font name="Arial" size="12.0"/>
+            </font>
+        </Label>
+        <Label fx:id="passengerNumberLabel" layoutX="228.0" layoutY="155.0" prefHeight="15.0" prefWidth="145.0"
+               text="Liczba pasażerów">
+            <font>
+                <Font name="Arial" size="12.0"/>
+            </font>
+        </Label>
+        <ComboBox fx:id="passengerNumberCB" layoutX="228.0" layoutY="172.0" prefHeight="25.0" prefWidth="145.0"/>
+        <Button fx:id="searchButton" layoutX="373.0" layoutY="232.0" mnemonicParsing="false"
+                onAction="#searchButtonClicked" prefHeight="25.0" prefWidth="108.0" text="Szukaj"/>
+        <Label layoutX="467.0" layoutY="31.0" text="Cześć Łukasz"/>
+        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="536.0" layoutY="14.0" pickOnBounds="true"
+                   preserveRatio="true"/>
+    </children>
+</Pane>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
+  -->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+      fx:controller="pl.pjatk.s17174.final_project.controller.MainController">
+    <children>
+        <Button fx:id="goToReservationButton" layoutX="221.0" layoutY="188.0" mnemonicParsing="false"
+                onAction="#goToReservation" text="Przejdz do wyszukania lotu"/>
+    </children>
+</Pane>

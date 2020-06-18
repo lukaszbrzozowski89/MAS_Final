@@ -4,11 +4,17 @@
 
 package pl.pjatk.s17174.final_project.main;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import pl.pjatk.s17174.final_project.enums.ClassType;
 import pl.pjatk.s17174.final_project.enums.FlightType;
 import pl.pjatk.s17174.final_project.enums.LuggageType;
 import pl.pjatk.s17174.final_project.enums.PaymentMethod;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -19,9 +25,11 @@ import static pl.pjatk.s17174.final_project.utils.Utils.*;
 /**
  * Main class to create Objects and start Application
  */
-public class Main {
+public class Main extends Application {
+
 
     public static void main(String[] args) {
+
 //        try {
 //            FileUtils.readExtentFromFile();
 //        } catch (Exception e) {
@@ -32,6 +40,7 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        launch(args);
 //        try {
 //            FileUtils.saveExtentToFile();
 //        } catch (IOException e) {
@@ -39,6 +48,16 @@ public class Main {
 //        }
     }
 
+
+    @Override
+    public void start(Stage primaryStage) throws IOException {
+        Pane root = FXMLLoader.load(getClass().getResource("../resources/main_window.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("MAS Final Project");
+        primaryStage.setResizable(false);
+        primaryStage.show();
+    }
 
     public static void createFewObjects() throws Exception {
         ArrayList<String> defaultLangs = new ArrayList<>();
@@ -124,7 +143,6 @@ public class Main {
         plane5.addLink(ownerClass, planeClass, owner1);
         plane6.addLink(ownerClass, planeClass, owner1);
         plane7.addLink(ownerClass, planeClass, owner1);
-
 
         Flight.FlightInstance flightInstance1 = flight1.createFlightInstance(LocalTime.of(6, 23));
         Flight.FlightInstance flightInstance2 = flight2.createFlightInstance(LocalTime.of(10, 4));
@@ -226,4 +244,5 @@ public class Main {
         reservation4.addLink(paymentClass, reservationClass, payment4);
 
     }
+
 }

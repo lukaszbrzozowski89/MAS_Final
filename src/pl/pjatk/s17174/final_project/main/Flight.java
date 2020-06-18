@@ -10,7 +10,8 @@ import pl.pjatk.s17174.final_project.enums.FlightType;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static pl.pjatk.s17174.final_project.utils.Utils.*;
+import static pl.pjatk.s17174.final_project.utils.Utils.flightClass;
+import static pl.pjatk.s17174.final_project.utils.Utils.flightInstanceClass;
 
 /**
  * Class using to store data about Flight
@@ -43,7 +44,7 @@ public class Flight extends ObjectPlusPlus {
 
     public FlightInstance createFlightInstance(LocalTime time) throws Exception {
 
-        FlightInstance flightInstance = new FlightInstance(setFlightId() + "_" + time.toString(), time);
+        FlightInstance flightInstance = new FlightInstance(setFlightId(time), time);
         this.addPart(flightInstanceClass, flightClass, flightInstance);
         return flightInstance;
     }
@@ -61,8 +62,8 @@ public class Flight extends ObjectPlusPlus {
         return additionalSchedule;
     }
 
-    private String setFlightId() {
-        return getNumberOfFlight();
+    private String setFlightId(LocalTime time) {
+        return getNumberOfFlight() + "_" + time.toString();
     }
 
     public void cancelFlight() {
