@@ -39,9 +39,6 @@ public class Reservation extends ObjectPlusPlus {
         this.paymentWaitTime = paymentWaitTime;
     }
 
-    public void checkFreeSeats(Flight.FlightInstance flightInstance) {
-        //todo
-    }
 
     public ReservationStatus checkReservationStatus() {
         return getStatus();
@@ -57,7 +54,6 @@ public class Reservation extends ObjectPlusPlus {
 
     public void changeReservationStatus(ReservationStatus status) {
         setStatus(status);
-        //todo
     }
 
     public void generateReservationDocs() {
@@ -78,6 +74,10 @@ public class Reservation extends ObjectPlusPlus {
 
     public ClassType getClassType() {
         return classType;
+    }
+
+    public void setClassType(ClassType classType) {
+        this.classType = classType;
     }
 
     public ReservationStatus getStatus() {

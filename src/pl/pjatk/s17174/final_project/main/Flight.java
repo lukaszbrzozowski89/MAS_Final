@@ -28,14 +28,17 @@ import static pl.pjatk.s17174.final_project.utils.Utils.flightInstanceClass;
  * @see FlightInstance
  */
 public class Flight extends ObjectPlusPlus {
+    private static int counter = 0;
     private String numberOfFlight;
     private Airport airportFrom;
     private Airport airportTo;
     private FlightType flightType;
     private LocalTime timeOfFlight;
+    private int id;
 
     public Flight(String numberOfFlight, Airport airportFrom, Airport airportTo, FlightType flightType) {
         super();
+        this.id = ++counter;
         this.numberOfFlight = numberOfFlight;
         this.airportFrom = airportFrom;
         this.airportTo = airportTo;
@@ -66,16 +69,20 @@ public class Flight extends ObjectPlusPlus {
         return getNumberOfFlight() + "_" + time.toString();
     }
 
-    public void cancelFlight() {
-        //todo
+    public void addWeeklySchedule(int day, LocalTime time) {
+        try {
+            createWeeklySchedule(day, time);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void addWeeklySchedule() {
-        //todo
-    }
-
-    public void addAdditionalSchedule() {
-        //todo
+    public void addAdditionalSchedule(LocalDate date, LocalTime time) {
+        try {
+            createAdditionalSchedule(date, time);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -103,14 +110,15 @@ public class Flight extends ObjectPlusPlus {
         this.timeOfFlight = timeOfFlight;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
-        return "Flight{" +
-                "numberOfFlight='" + numberOfFlight + '\'' +
-                ", airportFrom=" + airportFrom +
-                ", airportTo=" + airportTo +
-                ", flightType=" + flightType +
-                '}';
+        return "Flight nr='" + numberOfFlight + '\'' +
+                ", typ=" + flightType
+                ;
     }
 
     /**

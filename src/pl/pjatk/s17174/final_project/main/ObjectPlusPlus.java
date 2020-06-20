@@ -1,8 +1,6 @@
-/*
- * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
- */
-
 package pl.pjatk.s17174.final_project.main;
+
+import pl.pjatk.s17174.final_project.exceptions.NoLinksException;
 
 import java.io.PrintStream;
 import java.io.Serializable;
@@ -20,7 +18,7 @@ public abstract class ObjectPlusPlus extends ObjectPlus implements Serializable 
     /**
      * Stores information about all parts connected with any objects.
      */
-    public static Set<ObjectPlusPlus> allParts = new HashSet<>();
+    private static Set<ObjectPlusPlus> allParts = new HashSet<>();
     /**
      * Stores information about all connections of this object.
      */
@@ -113,74 +111,6 @@ public abstract class ObjectPlusPlus extends ObjectPlus implements Serializable 
         allParts.add(partObject);
     }
 
-
-    private void removeLink(String roleName, String reverseRoleName, ObjectPlusPlus targetObject, Object qualifier, int counter) {
-        Map<Object, ObjectPlusPlus> objectLinks = new HashMap<>();
-
-        // Protection for the reverse connection
-        if (counter < 1) {
-            return;
-        }
-        // Find a collection of links for the role
-        if (links.containsKey(roleName)) {
-            // Remove the links
-            objectLinks = links.remove(roleName);
-        }
-
-        // Check if there is already the connection
-        // If yes, then ignore the removal
-        if (objectLinks.containsKey(qualifier)) {
-            // Add a link for the target object
-            objectLinks.remove(qualifier, targetObject);
-
-            // Remove the reverse connection
-            targetObject.removeLink(reverseRoleName, roleName, this, this, counter - 1);
-        }
-    }
-
-    /**
-     * Removes a link to the given target object (optionally as quilified connection).
-     *
-     * @param roleName
-     * @param reverseRoleName
-     * @param targetObject
-     * @param qualifier       Jezeli rozny od null to tworzona jest asocjacja kwalifikowana.
-     */
-    public void removeLink(String roleName, String reverseRoleName, ObjectPlusPlus targetObject, Object qualifier) {
-        removeLink(roleName, reverseRoleName, targetObject, qualifier, 2);
-    }
-
-    /**
-     * Removes a link to the given target object (as an ordinary association, not the quilified one).
-     *
-     * @param roleName
-     * @param reverseRoleName
-     * @param targetObject
-     */
-    public void removeLink(String roleName, String reverseRoleName, ObjectPlusPlus targetObject) {
-        removeLink(roleName, reverseRoleName, targetObject, targetObject);
-    }
-
-    /**
-     * Remove an information about a connection (using a "semi" composition).
-     *
-     * @param roleName
-     * @param reverseRoleName
-     * @throws Exception
-     */
-    public void removePart(String roleName, String reverseRoleName, ObjectPlusPlus partObject) throws Exception {
-        // Check if the part exist somewhere
-        if (!allParts.contains(partObject)) {
-            throw new Exception("The part is not connected to a whole!");
-        }
-
-        removeLink(roleName, reverseRoleName, partObject);
-
-        // Store adding the object as a part
-        allParts.remove(partObject);
-    }
-
-
     /**
      * Gets an array of connected objects for the given role name.
      *
@@ -193,12 +123,12 @@ public abstract class ObjectPlusPlus extends ObjectPlus implements Serializable 
 
         if (!links.containsKey(roleName)) {
             // No links for the role
-            throw new Exception("No links for the role: " + roleName);
+            throw new NoLinksException("No links for the role: " + roleName);
         }
 
         objectLinks = links.get(roleName);
 
-        return (ObjectPlusPlus[]) objectLinks.values().toArray(new ObjectPlusPlus[0]);
+        return objectLinks.values().toArray(new ObjectPlusPlus[0]);
     }
 
     /**

@@ -30,19 +30,6 @@ public class Payment extends ObjectPlusPlus {
         this.amount = amount;
     }
 
-    public void getPaymentDetails() {
-        //todo
-    }
-
-    public void makePayment() {
-        //todo
-    }
-
-    public void changePaymentStatus(PaymentStatus status) {
-        setPaymentStatus(status);
-        //todo
-    }
-
     public int getId() {
         return id;
     }

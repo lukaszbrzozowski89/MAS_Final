@@ -12,5 +12,6 @@ package pl.pjatk.s17174.final_project.enums;
  */
 public enum ClassType {
     BUSINESS,
-    ECONOMY
+    ECONOMY,
+    PREMIUM
 }

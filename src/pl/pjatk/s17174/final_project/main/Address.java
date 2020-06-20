@@ -38,10 +38,6 @@ public class Address extends ObjectPlusPlus {
 
     @Override
     public String toString() {
-        return "Address{" +
-                "city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                '}';
+        return postalCode + " " + city + ", " + street;
     }
 }

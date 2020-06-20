@@ -4,6 +4,7 @@
 
 package pl.pjatk.s17174.final_project.utils;
 
+import javafx.scene.control.Alert;
 import pl.pjatk.s17174.final_project.main.*;
 
 public interface Utils {
@@ -22,6 +23,13 @@ public interface Utils {
     String weeklyScheduleClass = Flight.WeeklySchedule.class.getSimpleName();
     String additionalScheduleClass = Flight.AdditionalSchedule.class.getSimpleName();
     String reservationClass = Reservation.class.getSimpleName();
+
+    static void showAlertDialog(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Uwaga!");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
 }
 

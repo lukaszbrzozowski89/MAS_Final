@@ -2,7 +2,10 @@
  * Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
  */
 
-package pl.pjatk.s17174.final_project.main;
+package pl.pjatk.s17174.final_project.utils;
+
+import pl.pjatk.s17174.final_project.main.ObjectPlus;
+import pl.pjatk.s17174.final_project.main.ObjectPlusPlus;
 
 import java.io.*;
 
@@ -11,7 +14,7 @@ import java.io.*;
  *
  * @author Lukasz
  */
-public class FileUtils extends ObjectPlusPlus {
+public class FileUtils extends ObjectPlusPlus implements Serializable {
 
     static File extentFile = new File("Final_project_database_file");
 
@@ -23,17 +26,13 @@ public class FileUtils extends ObjectPlusPlus {
      */
     public static void readExtentFromFile() throws Exception {
         if (extentFile.exists()) {
-            ObjectInputStream streamInput = null;
-            try {
-                streamInput = new ObjectInputStream(new FileInputStream(extentFile));
-                getExtent(streamInput);
+            try (ObjectInputStream streamInput = new ObjectInputStream(new FileInputStream(extentFile))) {
+                ObjectPlus.readExtents(streamInput);
                 System.out.print("Size read from file: ");
             } catch (Exception c) {
                 System.out.println("Class not found.");
                 c.printStackTrace();
-            } finally {
-                if (streamInput != null)
-                    streamInput.close();
+                Utils.showAlertDialog(c.getMessage());
             }
         }
     }
@@ -45,17 +44,11 @@ public class FileUtils extends ObjectPlusPlus {
      * @throws IOException "
      */
     public static void saveExtentToFile() throws IOException {
-        ObjectOutputStream streamOutput = null;
-        try {
-            streamOutput = new ObjectOutputStream(new FileOutputStream(extentFile));
-            saveExtent(streamOutput);
+        try (ObjectOutputStream streamOutput = new ObjectOutputStream(new FileOutputStream(extentFile))) {
+            ObjectPlus.writeExtents(streamOutput);
             System.out.print("Size saved to file: ");
         } catch (IOException i) {
             i.printStackTrace();
-        } finally {
-            if (streamOutput != null) {
-                streamOutput.close();
-            }
         }
     }
 }

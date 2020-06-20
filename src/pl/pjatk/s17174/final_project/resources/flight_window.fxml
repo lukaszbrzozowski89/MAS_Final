@@ -5,53 +5,107 @@
   -->
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-
-<Pane xmlns:fx="http://javafx.com/fxml/1" fx:id="flightSummaryPane" maxHeight="-Infinity" maxWidth="-Infinity"
-      minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
-      xmlns="http://javafx.com/javafx/10.0.2-internal"
-      fx:controller="pl.pjatk.s17174.final_project.controller.FlightSummaryController">
-  <children>
-    <Label fx:id="hiLabel" layoutX="467.0" layoutY="31.0" text="Cześć Łukasz"/>
-    <ImageView fx:id="loginIV" fitHeight="50.0" fitWidth="50.0" layoutX="536.0" layoutY="14.0" pickOnBounds="true"
-               preserveRatio="true"/>
-    <Label layoutX="43.0" layoutY="64.0" text="Wybrano lot"/>
-    <Label fx:id="passengerDataLabel" layoutX="393.0" layoutY="64.0" prefHeight="17.0" prefWidth="108.0"
-           text="Dane pasażera"/>
-    <Label fx:id="flightFromLabel" layoutX="43.0" layoutY="94.0" text="Warszawa (WAW)"/>
-    <Label fx:id="flightToLabel" layoutX="157.0" layoutY="94.0" text="Paryż (CDG)"/>
-    <Label fx:id="filghtNumberLabelLeft" layoutX="43.0" layoutY="124.0" text="Lot numer"/>
-    <Label fx:id="filghtNumberLabelRight" layoutX="157.0" layoutY="124.0" text="LO333"/>
-    <Label fx:id="dateOfFlightLabelLeft" layoutX="43.0" layoutY="155.0" text="Data wylotu"/>
-    <Label fx:id="dateOfFlightLabelRight" layoutX="157.0" layoutY="155.0" text="07/06/2020"/>
-    <Label fx:id="nameLabelLeft" layoutX="393.0" layoutY="94.0" text="Imię"/>
-    <Label fx:id="nameLabelRight" layoutX="470.0" layoutY="94.0" prefHeight="17.0" prefWidth="108.0" text="Jan"/>
-    <Label fx:id="surnameLabelLeft" layoutX="393.0" layoutY="116.0" text="Nazwisko"/>
-    <Label fx:id="addressLabelRight" layoutX="470.0" layoutY="141.0" prefHeight="17.0" prefWidth="108.0"
-           text="Długa 12, Gdańsk"/>
-    <Label fx:id="surnameLabelRight" layoutX="470.0" layoutY="116.0" prefHeight="17.0" prefWidth="108.0"
-           text="Kowalski"/>
-    <Label fx:id="addressLabelLeft" layoutX="393.0" layoutY="141.0" text="Adres"/>
-    <Label fx:id="emailLabelLeft" layoutX="393.0" layoutY="164.0" text="adres e-mail"/>
-    <Label fx:id="emailLabelRight" layoutX="470.0" layoutY="164.0" prefHeight="17.0" prefWidth="108.0"
-           text="jan@wp.pl"/>
-    <Label fx:id="phoneLabelLeft" layoutX="393.0" layoutY="192.0" text="telefon"/>
-    <Label fx:id="phoneLabelRight" layoutX="470.0" layoutY="192.0" prefHeight="17.0" prefWidth="108.0"
-           text="123456789"/>
-    <Label fx:id="timeOfFlightLabelLeft" layoutX="43.0" layoutY="184.0" text="Godzina wylotu"/>
-    <Label fx:id="timeOfFlightLabelRight" layoutX="157.0" layoutY="184.0" text="10:30"/>
-    <RadioButton fx:id="bussinessClassRB" layoutX="27.0" layoutY="270.0" mnemonicParsing="false" text="Biznes">
-      <toggleGroup>
-        <ToggleGroup fx:id="buttonGroup"/>
-      </toggleGroup>
-    </RadioButton>
-    <RadioButton fx:id="premiumClassRB" layoutX="27.0" layoutY="295.0" mnemonicParsing="false" text="Premium"
-                 toggleGroup="$buttonGroup"/>
-    <RadioButton fx:id="economyClassRB" layoutX="27.0" layoutY="321.0" mnemonicParsing="false" selected="true"
-                 text="Economy" toggleGroup="$buttonGroup"/>
-    <Button fx:id="searchSeatsButton" layoutX="28.0" layoutY="353.0" mnemonicParsing="false"
-            onAction="#searchSeatsAction" prefHeight="25.0" prefWidth="114.0" text="Szukaj miejsca"/>
-    <Label layoutX="29.0" layoutY="245.0" text="Wybierz klasę:"/>
-  </children>
-</Pane>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="flightSummaryPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="850.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal"
+            fx:controller="pl.pjatk.s17174.final_project.controller.FlightSummaryController">
+    <children>
+        <AnchorPane fx:id="infoAP" prefHeight="215.0" prefWidth="850.0">
+            <children>
+                <Label fx:id="loginIDLabel" layoutX="767.0" layoutY="8.0" text="Cześć Łukasz"/>
+                <ImageView fx:id="loginIV" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"/>
+                <Label layoutX="20.0" layoutY="17.0" text="Wybrano lot"/>
+                <Label fx:id="passengerDataLabel" layoutX="470.0" layoutY="17.0" prefHeight="17.0" prefWidth="108.0"
+                       text="Dane pasażera"/>
+                <Label fx:id="flightFromLabel" layoutX="20.0" layoutY="42.0" text="Warszawa (WAW)"/>
+                <Label fx:id="flightToLabel" layoutX="179.0" layoutY="41.0" text="Paryż (CDG)"/>
+                <Label fx:id="filghtNumberLabelLeft" layoutX="20.0" layoutY="68.0" text="Lot numer"/>
+                <Label fx:id="filghtNumberLabelRight" layoutX="179.0" layoutY="68.0" text="LO333"/>
+                <Label fx:id="dateOfFlightLabelLeft" layoutX="20.0" layoutY="99.0" text="Data wylotu"/>
+                <Label fx:id="dateOfFlightLabelRight" layoutX="180.0" layoutY="98.0" text="07/06/2020"/>
+                <Label fx:id="nameLabelLeft" layoutX="470.0" layoutY="58.0" text="Imię"/>
+                <Label fx:id="nameLabelRight" layoutX="618.0" layoutY="58.0" prefHeight="18.0" prefWidth="224.0"
+                       text="Jan"/>
+                <Label fx:id="surnameLabelLeft" layoutX="470.0" layoutY="81.0" text="Nazwisko"/>
+                <Label fx:id="addressLabelRight" layoutX="618.0" layoutY="106.0" prefHeight="18.0" prefWidth="224.0"
+                       text="Długa 12, Gdańsk"/>
+                <Label fx:id="surnameLabelRight" layoutX="618.0" layoutY="81.0" prefHeight="18.0" prefWidth="224.0"
+                       text="Kowalski"/>
+                <Label fx:id="addressLabelLeft" layoutX="470.0" layoutY="106.0" text="Adres"/>
+                <Label fx:id="emailLabelLeft" layoutX="470.0" layoutY="132.0" text="adres e-mail"/>
+                <Label fx:id="emailLabelRight" layoutX="618.0" layoutY="132.0" prefHeight="18.0" prefWidth="224.0"
+                       text="jan@wp.pl"/>
+                <Label fx:id="phoneLabelLeft" layoutX="470.0" layoutY="157.0" text="telefon"/>
+                <Label fx:id="phoneLabelRight" layoutX="618.0" layoutY="157.0" prefHeight="18.0" prefWidth="224.0"
+                       text="123456789"/>
+                <Label fx:id="timeOfFlightLabelLeft" layoutX="20.0" layoutY="126.0" text="Godzina wylotu"/>
+                <Label fx:id="timeOfFlightLabelRight" layoutX="182.0" layoutY="125.0" text="10:30"/>
+                <Label fx:id="classLeftLabel" layoutX="20.0" layoutY="151.0" text="Klasa"/>
+                <Label fx:id="classRightLabel" layoutX="183.0" layoutY="150.0" text="Biznes"/>
+                <Label fx:id="lugaggeLeftLabel" layoutX="20.0" layoutY="176.0" text="Dodatkowy bagaż"/>
+                <Label fx:id="luggageRightLabel" layoutX="183.0" layoutY="175.0" text="Nie"/>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="luggagePane" layoutX="1.0" layoutY="193.0" prefHeight="170.0" prefWidth="282.0">
+            <children>
+                <Button fx:id="luggageButton" layoutX="19.0" layoutY="104.0" mnemonicParsing="false"
+                        onAction="#addLuggageIfExist" prefHeight="25.0" prefWidth="114.0" text="Akceptuj wybór"/>
+                <Label layoutX="19.0" layoutY="32.0" text="Czy chcesz dodatkowy bagaż?"/>
+                <ComboBox fx:id="selectLuggageChoiceBox" layoutX="19.0" layoutY="60.0" prefHeight="25.0"
+                          prefWidth="64.0"/>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="classTypeAP" layoutY="193.0" prefHeight="215.0" prefWidth="349.0">
+            <children>
+                <RadioButton fx:id="bussinessClassRB" layoutX="20.0" layoutY="58.0" mnemonicParsing="false"
+                             text="Biznes">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="buttonGroup"/>
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="premiumClassRB" layoutX="20.0" layoutY="83.0" mnemonicParsing="false" text="Premium"
+                             toggleGroup="$buttonGroup"/>
+                <RadioButton fx:id="economyClassRB" layoutX="20.0" layoutY="108.0" mnemonicParsing="false"
+                             selected="true" text="Economy" toggleGroup="$buttonGroup"/>
+                <Button fx:id="searchSeatsButton" layoutX="20.0" layoutY="131.0" mnemonicParsing="false"
+                        onAction="#searchSeatsAction" prefHeight="25.0" prefWidth="114.0" text="Szukaj miejsca"/>
+                <Label layoutX="17.0" layoutY="30.0" text="Wybierz klasę:"/>
+            </children>
+        </AnchorPane>
+        <Button fx:id="backToMainMenuButton" layoutX="684.0" layoutY="480.0" mnemonicParsing="false"
+                onAction="#backToMainMenu" text="Wróc do głównego menu"/>
+        <Button fx:id="backToPreviousScreenButton" layoutX="608.0" layoutY="480.0" mnemonicParsing="false"
+                onAction="#backToPreviousScreen" text="Cofnij"/>
+        <AnchorPane fx:id="paymentAP" layoutX="6.0" layoutY="215.0" prefHeight="200.0" prefWidth="838.0">
+            <children>
+                <Label layoutX="14.0" layoutY="5.0" text="Płatność"/>
+                <Button fx:id="paymentButton" layoutX="700.0" layoutY="87.0" mnemonicParsing="false"
+                        onAction="#goToPayment" text="Przejdź do płatności"/>
+                <Label layoutX="28.0" layoutY="41.0" text="Łączna kwota do zapłaty"/>
+                <Label fx:id="paymentLabel" layoutX="28.0" layoutY="65.0" text="1024.76 PLN"/>
+                <Label layoutX="347.0" layoutY="41.0" text="Wybierz sposób płatności"/>
+                <ComboBox fx:id="paymentMethodChoice" layoutX="344.0" layoutY="61.0" prefWidth="150.0"/>
+                <Label fx:id="infoPayment" layoutX="14.0" layoutY="178.0"
+                       text="Kwota zawiera wszystkie opłaty i jest ceną końcową">
+                    <font>
+                        <Font size="7.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="270.0" layoutY="143.0" text="Akceptujemy poniższe karty"/>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="paymentAnim" prefHeight="520.0" prefWidth="850.0">
+            <children>
+                <Label fx:id="waitLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="520.0" prefWidth="850.0"
+                       text="Please wait....">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

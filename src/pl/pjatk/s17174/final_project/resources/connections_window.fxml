@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
+  -->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="connectionsPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="520.0"
+            minWidth="850.0" prefHeight="520.0" prefWidth="850.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal"
+            fx:controller="pl.pjatk.s17174.final_project.controller.ConnectionsController">
+    <children>
+        <ListView fx:id="listViewLeft" layoutX="14.0" layoutY="91.0" prefHeight="316.0" prefWidth="338.0"
+                  AnchorPane.leftAnchor="14.0"/>
+        <ListView fx:id="listViewRight" layoutX="463.0" layoutY="91.0" prefHeight="316.0" prefWidth="338.0"
+                  AnchorPane.rightAnchor="14.0"/>
+        <Button fx:id="findConnectionsButton" layoutX="375.0" layoutY="223.0" mnemonicParsing="false"
+                onAction="#findConnections" text="Szukaj połączeń"/>
+        <Button fx:id="backToMainMenuButton" layoutX="684.0" layoutY="480.0" mnemonicParsing="false"
+                onAction="#backToMainMenu" text="Wróć do głównego menu" AnchorPane.bottomAnchor="14.0"
+                AnchorPane.rightAnchor="14.0"/>
+        <ComboBox fx:id="classChoice" layoutX="14.0" layoutY="31.0" prefHeight="26.0" prefWidth="338.0"
+                  AnchorPane.topAnchor="30.0"/>
+        <ComboBox fx:id="classLinkChoice" layoutX="498.0" layoutY="30.0" prefHeight="26.0" prefWidth="338.0"
+                  AnchorPane.topAnchor="30.0"/>
+        <Label layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="338.0" text="Wybierz klasę:"/>
+        <Label layoutX="498.0" layoutY="14.0" prefHeight="18.0" prefWidth="338.0"
+               text="Wybierz klasę, dla której szukasz powiązań:"/>
+    </children>
+</AnchorPane>

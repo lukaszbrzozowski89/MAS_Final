@@ -31,14 +31,6 @@ public class Passenger extends Person {
         this.phoneNumber = phoneNumber;
     }
 
-    public void chooseFlight(Flight.FlightInstance flightInstance) {
-        //todo
-    }
-
-    public void chooseSeat(int seat) {
-        //todo
-    }
-
     public int getId() {
         return id;
     }
@@ -57,10 +49,7 @@ public class Passenger extends Person {
 
     @Override
     public String toString() {
-        return "Passenger{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
+        return getName() + " " + getSurname();
+
     }
 }

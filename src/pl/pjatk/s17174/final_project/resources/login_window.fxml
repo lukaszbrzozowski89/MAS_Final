@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2020. Lukasz Brzozowski @ PJATK (s17174)
+  -->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="loginAP" prefHeight="520.0" prefWidth="850.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal"
+            fx:controller="pl.pjatk.s17174.final_project.controller.LoginController">
+   <children>
+      <ComboBox fx:id="usersCB" layoutX="333.0" layoutY="126.0" prefHeight="26.0" prefWidth="219.0"/>
+      <Button fx:id="loginButton" layoutX="381.0" layoutY="212.0" mnemonicParsing="false" onAction="#login"
+              prefHeight="56.0" prefWidth="104.0" text="Zaloguj"/>
+      <Button fx:id="backToMainMenuButton" layoutX="734.0" layoutY="510.0" mnemonicParsing="false"
+              onAction="#backToMainMenu" text="Wróc do głównego menu"/>
+      <Label layoutX="351.0" layoutY="348.0" text="Nie masz konta? Zarejestruj się"/>
+      <Button fx:id="signUpBtn" layoutX="388.0" layoutY="366.0" mnemonicParsing="false" onAction="#signUp"
+              text="Zarejestruj się"/>
+   </children>
+</AnchorPane>

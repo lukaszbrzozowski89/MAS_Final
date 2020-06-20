@@ -7,79 +7,90 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 /**
- * The class which helps with extent management.
- *
  * @author Mariusz Trzaska
  * Fill free to send me any remarks: mtrzaska@pjwstk.edu.pl
+ * <p>
+ * The code could be improved - see the homework in the lecture.
  */
-public class ObjectPlus implements Serializable {
+public abstract class ObjectPlus implements Serializable {
+    public static Map<Class, List<ObjectPlus>> allExtents = new Hashtable<>();
 
-    private static final long serialVersionUID = 11112L;
-
-    private static Hashtable<Class<? extends ObjectPlus>, ArrayList<ObjectPlus>> extent = new Hashtable<>();
-
+    /**
+     * Constructor.
+     */
     public ObjectPlus() {
-        ArrayList<ObjectPlus> ext;
-        Class<? extends ObjectPlus> className = this.getClass();
+        List extent = null;
+        Class theClass = this.getClass();
 
-        if (extent.containsKey(className)) {
-            ext = extent.get(className);
+        if (allExtents.containsKey(theClass)) {
+            // An extent of this class already exist
+            extent = allExtents.get(theClass);
         } else {
-            ext = new ArrayList<>();
-            extent.put(className, ext);
+            // An extent does not exist - create a new one
+            extent = new ArrayList();
+            allExtents.put(theClass, extent);
         }
-        ext.add(this);
+
+        extent.add(this);
     }
 
-    public static void saveExtent(ObjectOutputStream oos) throws IOException {
-        oos.writeObject(extent);
+    /**
+     * Writes all extents to the given stream (a class method).
+     *
+     * @throws IOException
+     */
+    public static void writeExtents(ObjectOutputStream stream) throws IOException {
+        stream.writeObject(allExtents);
     }
 
-    public static void getExtent(ObjectInputStream ois) throws IOException, ClassNotFoundException {
-        extent = (Hashtable<Class<? extends ObjectPlus>, ArrayList<ObjectPlus>>) ois.readObject();
+    /**
+     * Reads all extents from the given stream (a utility class method).
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public static void readExtents(ObjectInputStream stream) throws IOException, ClassNotFoundException {
+        allExtents = (Hashtable) stream.readObject();
     }
 
-    public static <T> void deleteExtension(T name) {
-        List<T> list = (List<T>) extent.get(name.getClass());
-        list.remove(name);
-    }
+    /**
+     * Shows an extent of the given class (a utility class method)
+     *
+     * @throws Exception
+     */
+    public static void showExtent(Class theClass) throws Exception {
+        List extent = null;
 
-    public static int extentSize(Class<? extends ObjectPlus> className) {
-        int counter = 0;
-        if (extent.containsKey(className)) {
-            counter = extent.get(className).size();
-        }
-        System.out.println(" Extent " + className.getSimpleName() + " : " + counter);
-        return counter;
-    }
-
-    public static void showExtent(Class<? extends ObjectPlus> className) throws Exception {
-        ArrayList<ObjectPlus> extentList;
-
-        if (extent.containsKey(className)) {
-            extentList = extent.get(className);
+        if (allExtents.containsKey(theClass)) {
+            // Extent of this class already exist
+            extent = allExtents.get(theClass);
         } else {
-            throw new Exception("Unknown class " + className);
+            throw new Exception("Unknown class " + theClass);
         }
 
-        System.out.println("Extent of class: " + className.getSimpleName());
+        System.out.println("Extent of the class: " + theClass.getSimpleName());
 
-        for (Object obj : extentList) {
-            System.out.println(obj + "\n");
+        for (Object obj : extent) {
+            System.out.println(obj);
         }
     }
 
-    public static ArrayList<ObjectPlus> getExtent(Class<? extends ObjectPlus> className) throws Exception {
-        ArrayList<ObjectPlus> extentList;
-
-        if (extent.containsKey(className)) {
-            extentList = extent.get(className);
-        } else {
-            throw new Exception("Unknown class " + className);
+    /**
+     * Gets the extent of the given class.
+     *
+     * @param type
+     * @param <T>
+     * @return
+     * @throws ClassNotFoundException
+     */
+    public static <T> Iterable<T> getExtent(Class<T> type) throws ClassNotFoundException {
+        if (allExtents.containsKey(type)) {
+            return (Iterable<T>) allExtents.get(type);
         }
-        System.out.println(extentList);
-        return extentList;
+
+        throw new ClassNotFoundException(String.format("%s. Stored extents: %s", type.toString(), allExtents.keySet()));
     }
 }

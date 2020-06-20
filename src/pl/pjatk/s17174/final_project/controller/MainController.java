@@ -8,7 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
@@ -16,14 +16,24 @@ public class MainController {
     @FXML
     public Button goToReservationButton;
     @FXML
-    Pane root;
+    public Button showConnectionsButton;
     @FXML
-    Pane reservationPane;
+    public AnchorPane root;
+    @FXML
+    public AnchorPane loginAP;
+    @FXML
+    public AnchorPane connectionsPane;
 
     @FXML
     public void goToReservation(ActionEvent event) throws IOException {
-        reservationPane = FXMLLoader.load(getClass().getResource("../resources/reservation_window.fxml"));
-        root.getChildren().setAll(reservationPane);
+        loginAP = FXMLLoader.load(getClass().getResource("../resources/login_window.fxml"));
+        root.getChildren().setAll(loginAP);
+    }
+
+    @FXML
+    public void showConnections(ActionEvent event) throws IOException {
+        connectionsPane = FXMLLoader.load(getClass().getResource("../resources/connections_window.fxml"));
+        root.getChildren().setAll(connectionsPane);
     }
 
 }

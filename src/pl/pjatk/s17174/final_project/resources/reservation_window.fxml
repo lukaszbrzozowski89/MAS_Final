@@ -6,13 +6,12 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" fx:id="reservationPane" maxHeight="-Infinity" maxWidth="-Infinity"
-      minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
-      xmlns="http://javafx.com/javafx/10.0.2-internal"
-      fx:controller="pl.pjatk.s17174.final_project.controller.ReservationController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="reservationPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="850.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal"
+            fx:controller="pl.pjatk.s17174.final_project.controller.ReservationController">
     <children>
         <Label fx:id="airportFromLabel" layoutX="28.0" layoutY="69.0" prefHeight="17.0" prefWidth="145.0"
                text="Wybierz lotnisko wylotowe">
@@ -40,10 +39,12 @@
             </font>
         </Label>
         <ComboBox fx:id="passengerNumberCB" layoutX="228.0" layoutY="172.0" prefHeight="25.0" prefWidth="145.0"/>
-        <Button fx:id="searchButton" layoutX="373.0" layoutY="232.0" mnemonicParsing="false"
-                onAction="#searchButtonClicked" prefHeight="25.0" prefWidth="108.0" text="Szukaj"/>
-        <Label layoutX="467.0" layoutY="31.0" text="Cześć Łukasz"/>
+        <Button fx:id="searchButton" layoutX="359.0" layoutY="302.0" mnemonicParsing="false"
+                onAction="#searchButtonClicked" prefHeight="50.0" prefWidth="162.0" text="Szukaj"/>
+        <Label fx:id="loginIDLabel" layoutX="767.0" layoutY="14.0" text="Cześć Łukasz"/>
         <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="536.0" layoutY="14.0" pickOnBounds="true"
                    preserveRatio="true"/>
+        <Button fx:id="backToMainMenuButton" layoutX="684.0" layoutY="480.0" mnemonicParsing="false"
+                onAction="#backToMainMenu" text="Wróc do menu głównego"/>
     </children>
-</Pane>
+</AnchorPane>
