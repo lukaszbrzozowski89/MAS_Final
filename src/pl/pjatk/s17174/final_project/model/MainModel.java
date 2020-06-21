@@ -86,10 +86,10 @@ public class MainModel extends ObjectPlusPlus implements Serializable {
         address2 = new Address("Warsaw", "Piękna 20", "00-121");
         address3 = new Address("Warsaw", "Koszykowa 45", "01-320");
 
-        steward1 = new Steward("Anna", "Kowalska", LocalDate.of(1966, 6, 2), address1, 1, defaultLangs);
-        steward2 = new Steward("Katarzyna", "Nowak", LocalDate.of(1987, 4, 5), address2, 2, defaultLangs);
-        steward3 = new Steward("Krzysztof", "Jerzyna", LocalDate.of(1975, 11, 1), address1, 3, defaultLangs);
-        steward4 = new Steward("Jarosław", "Psikuta", LocalDate.of(1975, 11, 1), address2, 3, defaultLangs);
+        steward1 = new Steward("Anna", "Kowalska", LocalDate.of(1966, 6, 2), address1, defaultLangs);
+        steward2 = new Steward("Katarzyna", "Nowak", LocalDate.of(1987, 4, 5), address2, defaultLangs);
+        steward3 = new Steward("Krzysztof", "Jerzyna", LocalDate.of(1975, 11, 1), address1, defaultLangs);
+        steward4 = new Steward("Jarosław", "Psikuta", LocalDate.of(1975, 11, 1), address2, defaultLangs);
 
         pilot1 = new Pilot("Adam", "Dudek", LocalDate.of(1975, 12, 2), address3, 9876, planes1, LocalDate.of(2021, 12, 31));
         pilot2 = new Pilot("Roman", "Kosowski", LocalDate.of(1965, 1, 1), address2, 1234, planes2, LocalDate.of(2020, 11, 13));
@@ -120,10 +120,10 @@ public class MainModel extends ObjectPlusPlus implements Serializable {
         flight7 = new Flight("LO287", airport1, airport2, FlightType.SHORT_HAUL);
         flight8 = new Flight("LO288", airport2, airport1, FlightType.SHORT_HAUL);
 
-        reservation1 = new Reservation(1, 1, ClassType.ECONOMY, LocalTime.now());
-        reservation2 = new Reservation(2, 1, ClassType.BUSINESS, LocalTime.now());
-        reservation3 = new Reservation(3, 1, ClassType.ECONOMY, LocalTime.now());
-        reservation4 = new Reservation(4, 1, ClassType.BUSINESS, LocalTime.now());
+        reservation1 = new Reservation(ClassType.ECONOMY, LocalTime.now());
+        reservation2 = new Reservation(ClassType.BUSINESS, LocalTime.now());
+        reservation3 = new Reservation(ClassType.ECONOMY, LocalTime.now());
+        reservation4 = new Reservation(ClassType.BUSINESS, LocalTime.now());
 
         payment1 = new Payment(1, PaymentMethod.ONLINE_PAYMENT, new BigDecimal(1200));
         payment2 = new Payment(2, PaymentMethod.CREDIT_CARD, new BigDecimal(9900));
@@ -131,13 +131,6 @@ public class MainModel extends ObjectPlusPlus implements Serializable {
         payment4 = new Payment(4, PaymentMethod.TRANSFER, new BigDecimal(1108));
 
         owner1 = new Owner("Fly With Me Airlines");
-        plane1.addLink(ownerClass, planeClass, owner1);
-        plane2.addLink(ownerClass, planeClass, owner1);
-        plane3.addLink(ownerClass, planeClass, owner1);
-        plane4.addLink(ownerClass, planeClass, owner1);
-        plane5.addLink(ownerClass, planeClass, owner1);
-        plane6.addLink(ownerClass, planeClass, owner1);
-        plane7.addLink(ownerClass, planeClass, owner1);
 
         flightInstance1 = flight1.createFlightInstance(LocalTime.of(6, 23));
         flightInstance2 = flight2.createFlightInstance(LocalTime.of(10, 4));
@@ -170,6 +163,16 @@ public class MainModel extends ObjectPlusPlus implements Serializable {
         weeklySchedule15 = flight1.createWeeklySchedule(1, LocalTime.of(22, 3));
         weeklySchedule16 = flight1.createWeeklySchedule(4, LocalTime.of(22, 3));
         System.out.println("objects created");
+        System.out.println("---------------");
+        System.out.println("Starting creating links between objects");
+        owner1.addLink(planeClass, ownerClass, plane);
+        owner1.addLink(planeClass, ownerClass, plane1);
+        owner1.addLink(planeClass, ownerClass, plane2);
+        owner1.addLink(planeClass, ownerClass, plane3);
+        owner1.addLink(planeClass, ownerClass, plane4);
+        owner1.addLink(planeClass, ownerClass, plane5);
+        owner1.addLink(planeClass, ownerClass, plane6);
+        owner1.addLink(planeClass, ownerClass, plane7);
 
         steward1.addLink(flightInstanceClass, stewardClass, flightInstance1);
         steward2.addLink(flightInstanceClass, stewardClass, flightInstance1);
@@ -267,10 +270,10 @@ public class MainModel extends ObjectPlusPlus implements Serializable {
 
     public static MainModel getInstance() throws Exception {
         if (instance == null) {
-            System.out.println("new instance");
+            System.out.println("new instance of Model");
             instance = new MainModel();
         } else {
-            System.out.println("this instance");
+            System.out.println("this instance of Model");
             return instance;
         }
         return instance;
@@ -337,8 +340,9 @@ public class MainModel extends ObjectPlusPlus implements Serializable {
     }
 
     public void createReservation() {
-        reservation = new Reservation(99, 99, null, LocalTime.now());
-        this.passenger.addLink(reservationClass, passengerClass, reservation);
+        reservation = new Reservation(null, LocalTime.now());
+        this.getPassenger().addLink(reservationClass, passengerClass, reservation);
+        this.getFlightInstance().addLink(reservationClass, flightInstanceClass, reservation);
     }
 
     public Reservation getReservation() {

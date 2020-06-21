@@ -4,6 +4,8 @@
 
 package pl.pjatk.s17174.final_project.main;
 
+import pl.pjatk.s17174.final_project.utils.Utils;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -22,9 +24,13 @@ public class Steward extends Person {
     private ArrayList<String> languages = new ArrayList<>();
 
 
-    public Steward(String name, String surname, LocalDate dateOfBirth, Address address, int evidenceId, ArrayList<String> languages) {
+    public Steward(String name, String surname, LocalDate dateOfBirth, Address address, ArrayList<String> languages) throws Exception {
         super(name, surname, dateOfBirth, address);
-        this.evidenceId = evidenceId;
+        this.evidenceId = counter++;
+        if (languages.size() < 2) {
+            Utils.showAlertDialog("Steward musi znac przynajmniej 2 jezyki");
+            throw new Exception();
+        }
         this.languages = languages;
     }
 

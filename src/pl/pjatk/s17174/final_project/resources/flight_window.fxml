@@ -5,13 +5,14 @@
   -->
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.*?>
+
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="flightSummaryPane" maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="850.0"
             xmlns="http://javafx.com/javafx/10.0.2-internal"
-            fx:controller="pl.pjatk.s17174.final_project.controller.FlightSummaryController">
+            fx:controller="pl.pjatk.s17174.final_project.controller.FlightController">
     <children>
         <AnchorPane fx:id="infoAP" prefHeight="215.0" prefWidth="850.0">
             <children>
@@ -45,7 +46,7 @@
                 <Label fx:id="timeOfFlightLabelRight" layoutX="182.0" layoutY="125.0" text="10:30"/>
                 <Label fx:id="classLeftLabel" layoutX="20.0" layoutY="151.0" text="Klasa"/>
                 <Label fx:id="classRightLabel" layoutX="183.0" layoutY="150.0" text="Biznes"/>
-                <Label fx:id="lugaggeLeftLabel" layoutX="20.0" layoutY="176.0" text="Dodatkowy bagaż"/>
+                <Label fx:id="luggageLeftLabel" layoutX="20.0" layoutY="176.0" text="Dodatkowy bagaż"/>
                 <Label fx:id="luggageRightLabel" layoutX="183.0" layoutY="175.0" text="Nie"/>
             </children>
         </AnchorPane>
@@ -94,17 +95,18 @@
                         <Font size="7.0"/>
                     </font>
                 </Label>
-                <Label layoutX="270.0" layoutY="143.0" text="Akceptujemy poniższe karty"/>
             </children>
         </AnchorPane>
         <AnchorPane fx:id="paymentAnim" prefHeight="520.0" prefWidth="850.0">
             <children>
                 <Label fx:id="waitLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="520.0" prefWidth="850.0"
-                       text="Please wait....">
+                       text="Trwa przetwarzanie płatności...">
                     <font>
                         <Font size="24.0"/>
                     </font>
                 </Label>
+                <ProgressIndicator fx:id="paymentProgress" layoutX="412.0" layoutY="291.0" prefHeight="74.0"
+                                   prefWidth="75.0" progress="0.0"/>
             </children>
         </AnchorPane>
     </children>

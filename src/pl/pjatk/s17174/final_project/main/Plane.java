@@ -64,6 +64,11 @@ public class Plane extends ObjectPlusPlus {
         this.dateOfNextTechnicalReview = this.dateOfLatestTechnicalReview.plusMonths(6);
     }
 
+    public void setDateOfLatestTechnicalReview(LocalDate dateOfLatestTechnicalReview) {
+        this.dateOfLatestTechnicalReview = dateOfLatestTechnicalReview;
+        setDateOfNextTechnicalReview();
+    }
+
     @Override
     public String toString() {
         return "Plane{" +

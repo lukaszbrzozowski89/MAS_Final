@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import pl.pjatk.s17174.final_project.main.Address;
@@ -28,13 +29,13 @@ public class SignupController implements Initializable {
     public TextField surnameTF;
     public TextField eMailTF;
     public TextField phoneTF;
-    public TextField birthDayTF;
     public TextField cityTF;
     public TextField postalCodeTF;
     public TextField streetTF;
     public Button signUpButton;
     public AnchorPane signUpPane;
     public AnchorPane root;
+    public DatePicker birthDateDP;
 
     public void backToMainMenu(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("../resources/main_window.fxml"));
@@ -43,14 +44,14 @@ public class SignupController implements Initializable {
     }
 
     public void signUp(ActionEvent event) throws Exception {
-        if (!nameTF.getText().isEmpty() && !surnameTF.getText().isEmpty() && !birthDayTF.getText().isEmpty()
-                && !eMailTF.getText().isEmpty() && !phoneTF.getText().isEmpty() && !streetTF.getText().isEmpty() &&
-                !postalCodeTF.getText().isEmpty() && !cityTF.getText().isEmpty()) {
+        if (checkInput(nameTF.getText()) && checkInput(surnameTF.getText()) && checkEmail(eMailTF.getText())
+                && checkInputDigits(phoneTF.getText()) && checkInput(streetTF.getText()) &&
+                !postalCodeTF.getText().isEmpty() && checkInput(cityTF.getText())) {
 
             Passenger passenger = new Passenger(nameTF.getText(), surnameTF.getText(),
-                    LocalDate.of(Integer.parseInt(birthDayTF.getText().substring(0, 4)),
-                            Integer.parseInt(birthDayTF.getText().substring(4, 6)),
-                            Integer.parseInt(birthDayTF.getText().substring(6))),
+                    LocalDate.of(birthDateDP.getValue().getYear(),
+                            birthDateDP.getValue().getMonthValue(),
+                            birthDateDP.getValue().getDayOfMonth()),
                     new Address(cityTF.getText(), streetTF.getText(), postalCodeTF.getText()),
                     eMailTF.getText(), phoneTF.getText());
             MainModel.getInstance().addPassenger(passenger);
@@ -61,8 +62,20 @@ public class SignupController implements Initializable {
             root = FXMLLoader.load(getClass().getResource("../resources/main_window.fxml"));
             signUpPane.getChildren().setAll(root);
         } else {
-            Utils.showAlertDialog("wypełnij wszystkie pola");
+            Utils.showAlertDialog("Wypełnij poprawnie wszystkie pola");
         }
+    }
+
+    public boolean checkInput(String message) {
+        return message.matches("\\D+");
+    }
+
+    public boolean checkInputDigits(String message) {
+        return message.matches("\\d+");
+    }
+
+    public boolean checkEmail(String message) {
+        return !message.matches("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}$");
     }
 
     @Override

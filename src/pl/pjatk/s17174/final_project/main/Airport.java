@@ -35,7 +35,7 @@ public class Airport extends ObjectPlusPlus {
     public String toString() {
         return "Airport{" +
                 "name='" + name + '\'' +
-                ", flightCode='" + airportCode + '\'' +
+                ", airportCode='" + airportCode + '\'' +
                 '}';
     }
 }

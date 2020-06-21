@@ -1,0 +1,5 @@
+[Aneta Pasik]
+
+Reservation{id=5, seatNumber=5, classType=BUSINESS, status=PAID, paymentWaitTime=16:37:29.205446800}
+[FlightInstance{flightId='LO438_15:03', flightStatus=ADDED, timeOfStart=15:03}]
+[Payment{id=1, paymentMethod=CREDIT_CARD, paymentStatus=FINISHED, amount=1200}]

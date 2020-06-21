@@ -4,6 +4,7 @@
 
 package pl.pjatk.s17174.final_project.controller;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,15 +26,13 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FlightSummaryController implements Initializable {
+public class FlightController implements Initializable {
     public Reservation reservation;
     public ObservableList<String> luggageSelect = FXCollections.observableArrayList();
     public ObservableList<PaymentMethod> paymentMethods = FXCollections.observableArrayList();
 
     @FXML
     public AnchorPane paymentAnim;
-    @FXML
-    public Label waitLabel;
     @FXML
     public Label loginIDLabel;
     @FXML
@@ -45,35 +44,19 @@ public class FlightSummaryController implements Initializable {
     @FXML
     public Label flightToLabel;
     @FXML
-    public Label filghtNumberLabelLeft;
-    @FXML
     public Label filghtNumberLabelRight;
-    @FXML
-    public Label dateOfFlightLabelLeft;
     @FXML
     public Label dateOfFlightLabelRight;
     @FXML
-    public Label nameLabelLeft;
-    @FXML
     public Label nameLabelRight;
-    @FXML
-    public Label surnameLabelLeft;
     @FXML
     public Label addressLabelRight;
     @FXML
     public Label surnameLabelRight;
     @FXML
-    public Label addressLabelLeft;
-    @FXML
-    public Label emailLabelLeft;
-    @FXML
     public Label emailLabelRight;
     @FXML
-    public Label phoneLabelLeft;
-    @FXML
     public Label phoneLabelRight;
-    @FXML
-    public Label timeOfFlightLabelLeft;
     @FXML
     public Label timeOfFlightLabelRight;
     @FXML
@@ -111,11 +94,7 @@ public class FlightSummaryController implements Initializable {
     @FXML
     public Button paymentButton;
     @FXML
-    public Label paymentLabel;
-    @FXML
     public ComboBox<PaymentMethod> paymentMethodChoice;
-    @FXML
-    public Label infoPayment;
     @FXML
     public AnchorPane infoAP;
     @FXML
@@ -123,27 +102,33 @@ public class FlightSummaryController implements Initializable {
     @FXML
     public Label classRightLabel;
     @FXML
-    public Label lugaggeLeftLabel;
-    @FXML
     public Label luggageRightLabel;
+    @FXML
+    public Label luggageLeftLabel;
+    public ProgressIndicator paymentProgress;
     MainModel mainModel;
 
     @FXML
-    public void searchSeatsAction(ActionEvent event) {
-        luggagePane.setVisible(true);
-        classTypeAP.setVisible(false);
-        backToPreviousScreenButton.setVisible(true);
-        classRightLabel.setVisible(true);
-        classLeftLabel.setVisible(true);
+    public void searchSeatsAction(ActionEvent event) throws Exception {
+        if (mainModel.getFlightInstance().checkSeatsAvailability()) {
 
-        if (bussinessClassRB.isSelected()) {
-            reservation.setClassType(ClassType.BUSINESS);
-        } else if (premiumClassRB.isSelected()) {
-            reservation.setClassType(ClassType.PREMIUM);
+            luggagePane.setVisible(true);
+            classTypeAP.setVisible(false);
+            backToPreviousScreenButton.setVisible(true);
+            classRightLabel.setVisible(true);
+            classLeftLabel.setVisible(true);
+
+            if (bussinessClassRB.isSelected()) {
+                reservation.setClassType(ClassType.BUSINESS);
+            } else if (premiumClassRB.isSelected()) {
+                reservation.setClassType(ClassType.PREMIUM);
+            } else {
+                reservation.setClassType(ClassType.ECONOMY);
+            }
+            classRightLabel.setText(reservation.getClassType().toString());
         } else {
-            reservation.setClassType(ClassType.ECONOMY);
+            Utils.showAlertDialog("Brak miejsc");
         }
-        classRightLabel.setText(reservation.getClassType().toString());
     }
 
     @FXML
@@ -156,7 +141,7 @@ public class FlightSummaryController implements Initializable {
     @FXML
     public void addLuggageIfExist(ActionEvent event) {
         luggagePane.setVisible(false);
-        lugaggeLeftLabel.setVisible(true);
+        luggageLeftLabel.setVisible(true);
         luggageRightLabel.setVisible(true);
         paymentAP.setVisible(true);
         if (selectLuggageChoiceBox.getSelectionModel().getSelectedItem().equals("Tak")) {
@@ -173,14 +158,14 @@ public class FlightSummaryController implements Initializable {
             classRightLabel.setVisible(false);
             classLeftLabel.setVisible(false);
             luggageRightLabel.setVisible(false);
-            lugaggeLeftLabel.setVisible(false);
+            luggageLeftLabel.setVisible(false);
         } else if (classTypeAP.isVisible()) {
             reservationPane = FXMLLoader.load(getClass().getResource("../resources/reservation_window.fxml"));
             flightSummaryPane.getChildren().setAll(reservationPane);
         } else if (paymentAP.isVisible()) {
             paymentAP.setVisible(false);
             luggagePane.setVisible(true);
-            lugaggeLeftLabel.setVisible(false);
+            luggageLeftLabel.setVisible(false);
             luggageRightLabel.setVisible(false);
         }
 
@@ -219,26 +204,47 @@ public class FlightSummaryController implements Initializable {
         paymentAP.setVisible(false);
         paymentAnim.setVisible(false);
         luggagePane.setVisible(false);
-        lugaggeLeftLabel.setVisible(false);
+        luggageLeftLabel.setVisible(false);
         luggageRightLabel.setVisible(false);
         classLeftLabel.setVisible(false);
         classRightLabel.setVisible(false);
     }
 
-    public void goToPayment(ActionEvent event) throws IOException {
+    public void goToPayment(ActionEvent event) {
         if (paymentMethodChoice.getSelectionModel().getSelectedItem() != null) {
             paymentAP.setVisible(false);
+            backToMainMenuButton.setVisible(false);
+            backToPreviousScreenButton.setVisible(false);
             infoAP.setVisible(false);
             paymentAnim.setVisible(true);
             reservation.setStatus(ReservationStatus.WAITING_FOR_PAYMENT);
             mainModel.setPayment(new Payment(1, paymentMethodChoice.getValue(), new BigDecimal(1200)));
             mainModel.getPayment().setPaymentStatus(PaymentStatus.DURING_PROCESSING);
-            summaryAP = FXMLLoader.load(getClass().getResource("../resources/summary_window.fxml"));
-            flightSummaryPane.getChildren().setAll(summaryAP);
+            new Thread(() -> {
+                for (int i = 0; i < 100; i++) {
+                    final double progress = i * 0.01;
+                    Platform.runLater(() -> paymentProgress.setProgress(progress));
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                mainModel.getPayment().setPaymentStatus(PaymentStatus.FINISHED);
+                Platform.runLater(this::setFinalRoot);
+            }).start();
         } else {
             Utils.showAlertDialog("Wybierz sposób płatności");
         }
+    }
 
+    public void setFinalRoot() {
+        try {
+            summaryAP = FXMLLoader.load(getClass().getResource("../resources/summary_window.fxml"));
+            flightSummaryPane.getChildren().setAll(summaryAP);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -20,16 +20,18 @@ public class Pilot extends Person {
     private int licenseId;
     private ArrayList<Plane> licenses = new ArrayList<>();
     private LocalDate dateOfExamsValidity;
+    private int id;
 
     public Pilot(String name, String surname, LocalDate dateOfBirth, Address address, int licenseId, ArrayList<Plane> licenses, LocalDate dateOfExamsValidity) {
         super(name, surname, dateOfBirth, address);
+        this.id = counter++;
         this.licenseId = licenseId;
         this.licenses = licenses;
         this.dateOfExamsValidity = dateOfExamsValidity;
     }
 
     public static Pilot checkExamsValidity() {
-        // TODO
+//     if ()
         return null;
     }
 
@@ -39,7 +41,6 @@ public class Pilot extends Person {
 
     public void addLicense(Plane plane) {
         licenses.add(plane);
-        // TODO
     }
 
     public int getLicenseId() {
@@ -62,12 +63,12 @@ public class Pilot extends Person {
         this.dateOfExamsValidity = dateOfExamsValidity;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
-        return "Pilot{" +
-                "licenseId=" + licenseId +
-                ", licenses=" + licenses +
-                ", dateOfExamsValidity=" + dateOfExamsValidity +
-                '}';
+        return "Pilot:" + getName() + " " + getSurname();
     }
 }

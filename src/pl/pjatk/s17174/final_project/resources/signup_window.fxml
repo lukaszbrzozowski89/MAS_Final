@@ -5,32 +5,33 @@
   -->
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
+
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="signUpPane" prefHeight="520.0" prefWidth="850.0"
             xmlns="http://javafx.com/javafx/10.0.2-internal"
             fx:controller="pl.pjatk.s17174.final_project.controller.SignupController">
-   <children>
-      <Label layoutX="50.0" layoutY="65.0" text="Imię"/>
-      <Label layoutX="50.0" layoutY="120.0" text="Nazwisko"/>
-      <Label layoutX="50.0" layoutY="183.0" text="e-mail"/>
-      <Label layoutX="50.0" layoutY="237.0" text="telefon"/>
-      <Label layoutX="50.0" layoutY="292.0" text="Data urodzenia"/>
-      <Label layoutX="430.0" layoutY="65.0" text="Miasto"/>
-      <Label layoutX="428.0" layoutY="120.0" text="Kod pocztowy"/>
-      <Label layoutX="428.0" layoutY="183.0" text="Ulica"/>
-      <Button fx:id="backToMainMenuButton" layoutX="684.0" layoutY="480.0" mnemonicParsing="false"
-              onAction="#backToMainMenu" text="Wróć do głównego menu"/>
-      <TextField fx:id="nameTF" layoutX="137.0" layoutY="61.0"/>
-      <TextField fx:id="surnameTF" layoutX="137.0" layoutY="116.0"/>
-      <TextField fx:id="eMailTF" layoutX="137.0" layoutY="179.0"/>
-      <TextField fx:id="phoneTF" layoutX="137.0" layoutY="233.0"/>
-      <TextField fx:id="birthDayTF" layoutX="137.0" layoutY="288.0"/>
-      <TextField fx:id="cityTF" layoutX="528.0" layoutY="61.0"/>
-      <TextField fx:id="postalCodeTF" layoutX="528.0" layoutY="116.0"/>
-      <TextField fx:id="streetTF" layoutX="528.0" layoutY="179.0"/>
-      <Label layoutX="425.0" layoutY="292.0" prefHeight="18.0" prefWidth="252.0"
-             text="Wszystkie dane muszą być uzupełnione"/>
-      <Button fx:id="signUpButton" layoutX="559.0" layoutY="340.0" mnemonicParsing="false" onAction="#signUp"
-              prefHeight="40.0" prefWidth="118.0" text="Zarejestruj się"/>
-   </children>
+    <children>
+        <Label layoutX="50.0" layoutY="65.0" text="Imię"/>
+        <Label layoutX="50.0" layoutY="120.0" text="Nazwisko"/>
+        <Label layoutX="50.0" layoutY="183.0" text="e-mail"/>
+        <Label layoutX="50.0" layoutY="237.0" text="telefon"/>
+        <Label layoutX="50.0" layoutY="292.0" text="Data urodzenia"/>
+        <Label layoutX="430.0" layoutY="65.0" text="Miasto"/>
+        <Label layoutX="428.0" layoutY="120.0" text="Kod pocztowy"/>
+        <Label layoutX="428.0" layoutY="183.0" text="Ulica"/>
+        <Button fx:id="backToMainMenuButton" layoutX="684.0" layoutY="480.0" mnemonicParsing="false"
+                onAction="#backToMainMenu" text="Wróć do głównego menu"/>
+        <TextField fx:id="nameTF" layoutX="137.0" layoutY="61.0"/>
+        <TextField fx:id="surnameTF" layoutX="137.0" layoutY="116.0"/>
+        <TextField fx:id="eMailTF" layoutX="137.0" layoutY="179.0"/>
+        <TextField fx:id="phoneTF" layoutX="137.0" layoutY="233.0"/>
+        <TextField fx:id="cityTF" layoutX="528.0" layoutY="61.0"/>
+        <TextField fx:id="postalCodeTF" layoutX="528.0" layoutY="116.0"/>
+        <TextField fx:id="streetTF" layoutX="528.0" layoutY="179.0"/>
+        <Label layoutX="425.0" layoutY="292.0" prefHeight="18.0" prefWidth="252.0"
+               text="Wszystkie dane muszą być uzupełnione"/>
+        <Button fx:id="signUpButton" layoutX="559.0" layoutY="340.0" mnemonicParsing="false" onAction="#signUp"
+                prefHeight="40.0" prefWidth="118.0" text="Zarejestruj się"/>
+        <DatePicker fx:id="birthDateDP" layoutX="137.0" layoutY="288.0" prefHeight="26.0" prefWidth="149.0"/>
+    </children>
 </AnchorPane>

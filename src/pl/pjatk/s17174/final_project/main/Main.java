@@ -13,14 +13,24 @@ import pl.pjatk.s17174.final_project.utils.FileUtils;
 import pl.pjatk.s17174.final_project.utils.Utils;
 
 import java.io.IOException;
-import java.io.Serializable;
 
 /**
  * Main class to create Objects and start Application
  */
-public class Main extends Application implements Serializable {
+public class Main extends Application {
 
     public static void main(String[] args) {
+        //don't need to load from file - there is in MainModel creating objects -
+        // if you want to load from file - please comment lines with creating in Main Model - it avoid duplicates
+
+        /*
+        try {
+            FileUtils.readExtentFromFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         */
+
         launch(args);
     }
 

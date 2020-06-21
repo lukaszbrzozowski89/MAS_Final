@@ -6,8 +6,12 @@ package pl.pjatk.s17174.final_project.main;
 
 import pl.pjatk.s17174.final_project.enums.ClassType;
 import pl.pjatk.s17174.final_project.enums.ReservationStatus;
+import pl.pjatk.s17174.final_project.model.MainModel;
+import pl.pjatk.s17174.final_project.utils.Utils;
 
+import java.io.PrintWriter;
 import java.time.LocalTime;
+import java.util.Arrays;
 
 /**
  * Class to store data about Reservation
@@ -29,11 +33,12 @@ public class Reservation extends ObjectPlusPlus {
     private ClassType classType;
     private ReservationStatus status;
     private LocalTime paymentWaitTime;
+    private static int counter = 0;
 
-    public Reservation(int id, int seatNumber, ClassType classType, LocalTime paymentWaitTime) {
+    public Reservation(ClassType classType, LocalTime paymentWaitTime) {
         super();
-        this.id = id;
-        this.seatNumber = seatNumber;
+        this.id = ++counter;
+        this.seatNumber = counter;
         this.classType = classType;
         this.status = ReservationStatus.STARTED;
         this.paymentWaitTime = paymentWaitTime;
@@ -45,23 +50,37 @@ public class Reservation extends ObjectPlusPlus {
     }
 
     public void checkPaymentStatus() {
-        //todo
+
     }
 
     public void changePaymentStatus() {
-        //todo
+        if (LocalTime.now().isAfter(getPaymentWaitTime().plusHours(24))) {
+            cancelReservation();
+        } else {
+            setStatus(ReservationStatus.WAITING_FOR_PAYMENT);
+        }
     }
 
     public void changeReservationStatus(ReservationStatus status) {
         setStatus(status);
     }
 
-    public void generateReservationDocs() {
-        //todo
+    public void generateReservationDocs() throws Exception {
+        MainModel mainModel = MainModel.getInstance();
+        PrintWriter out = new PrintWriter("reservation.txt");
+        out.write(Arrays.toString(mainModel.getReservation().getLinks(Utils.passengerClass)));
+        out.write("\n");
+        out.write("\n");
+        out.write(mainModel.getReservation().toString());
+        out.write("\n");
+        out.write(Arrays.toString(mainModel.getReservation().getLinks(Utils.flightInstanceClass)));
+        out.write("\n");
+        out.write(Arrays.toString(mainModel.getReservation().getLinks(Utils.paymentClass)));
+        out.close();
     }
 
     public void cancelReservation() {
-        //todo
+        setStatus(ReservationStatus.CANCELLED);
     }
 
     public int getId() {

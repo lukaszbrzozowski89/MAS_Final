@@ -104,7 +104,6 @@ public class ConnectionsController implements Initializable {
                         Utils.showAlertDialog("Klasa nie znaleziona, spróbuj ponownie");
                     }
                     listViewLeft.setItems(observableList);
-
                 }
         );
 
@@ -122,6 +121,5 @@ public class ConnectionsController implements Initializable {
 
                 });
     }
-
 
 }

@@ -9,9 +9,10 @@ import pl.pjatk.s17174.final_project.enums.FlightType;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Arrays;
+import java.util.List;
 
-import static pl.pjatk.s17174.final_project.utils.Utils.flightClass;
-import static pl.pjatk.s17174.final_project.utils.Utils.flightInstanceClass;
+import static pl.pjatk.s17174.final_project.utils.Utils.*;
 
 /**
  * Class using to store data about Flight
@@ -126,32 +127,54 @@ public class Flight extends ObjectPlusPlus {
      *
      * @author Lukasz
      */
-    public class FlightInstance extends ObjectPlusPlus {
+    public static class FlightInstance extends ObjectPlusPlus {
         private String flightId;
         private FlightStatus flightStatus;
         private LocalTime timeOfStart;
+        private static int counterFlightInstance = 1;
+        private int id;
 
         private FlightInstance(String flightId, LocalTime timeOfStart) {
             super();
+            this.id = counterFlightInstance++;
             this.flightId = flightId;
             this.flightStatus = FlightStatus.ADDED;
             this.timeOfStart = timeOfStart;
         }
 
-        public void cancelFlightInstance() {
-            // TODO
+        /**
+         * Method which change status of flight for cancelled - uses private setter
+         *
+         * @param instance flight instance you want to cancel
+         */
+        public void cancelFlightInstance(FlightInstance instance) {
+            instance.setFlightStatus(FlightStatus.CANCELLED);
         }
 
-        public void updateFlightStatus() {
-            // TODO
+        /**
+         * Method which change flight status - uses private setter
+         *
+         * @param instance flight instance you want to update
+         * @param status   status you want to update
+         */
+        public void updateFlightStatus(FlightInstance instance, FlightStatus status) {
+            instance.setFlightStatus(status);
         }
 
-        public void updateTimeOfDeparture() {
-            // TODO
+        /**
+         * Method which change time of flight ones o flight instances - uses private setter
+         *
+         * @param instance flight instance you want to change
+         * @param time     time of flight departure
+         */
+        public void updateTimeOfDeparture(FlightInstance instance, LocalTime time) {
+            instance.setTimeOfStart(time);
         }
 
-        public void checkSeatsAvailability() {
-            // TODO
+        public boolean checkSeatsAvailability() throws Exception {
+            List<FlightInstance> linkedClasses = (List<FlightInstance>) ObjectPlus.getExtent(FlightInstance.class);
+
+            return true;
         }
 
         public String getFlightId() {
@@ -164,6 +187,14 @@ public class Flight extends ObjectPlusPlus {
 
         public LocalTime getTimeOfStart() {
             return timeOfStart;
+        }
+
+        private void setTimeOfStart(LocalTime timeOfStart) {
+            this.timeOfStart = timeOfStart;
+        }
+
+        private void setFlightStatus(FlightStatus flightStatus) {
+            this.flightStatus = flightStatus;
         }
 
         @Override
@@ -181,12 +212,15 @@ public class Flight extends ObjectPlusPlus {
      *
      * @author Lukasz
      */
-    public class WeeklySchedule extends ObjectPlusPlus {
+    public static class WeeklySchedule extends ObjectPlusPlus {
         private int dayOfWeek;
         private LocalTime timeOfFlight;
+        private static int counterWeekly = 1;
+        private int id;
 
         private WeeklySchedule(int dayOfWeek, LocalTime timeOfFlight) {
             super();
+            this.id = counterWeekly++;
             this.dayOfWeek = dayOfWeek;
             this.timeOfFlight = timeOfFlight;
         }
@@ -199,18 +233,22 @@ public class Flight extends ObjectPlusPlus {
             return timeOfFlight;
         }
 
-        public void addWeeklySchedule() {
-            // TODO
+        public void setDayOfWeek(int dayOfWeek) {
+            this.dayOfWeek = dayOfWeek;
         }
 
-        public void deleteWeeklySchedule() {
-            // TODO
-
+        public void setTimeOfFlight(LocalTime timeOfFlight) {
+            this.timeOfFlight = timeOfFlight;
         }
 
-        public void editWeeklySchedule() {
-            // TODO
+        public void editWeeklySchedule(WeeklySchedule weeklySchedule) {
+            weeklySchedule.setDayOfWeek(weeklySchedule.getDayOfWeek());
+            weeklySchedule.setTimeOfFlight(weeklySchedule.getTimeOfFlight());
+            System.out.println("edited");
+        }
 
+        public int getId() {
+            return id;
         }
 
         @Override
@@ -225,26 +263,18 @@ public class Flight extends ObjectPlusPlus {
     /**
      * inner class with private constructor to create composition - additional schedule can't exists without flight
      */
-    public class AdditionalSchedule extends ObjectPlusPlus {
+    public static class AdditionalSchedule extends ObjectPlusPlus {
         private LocalDate dayOfStart;
         private LocalTime timeOfFlight;
+        private static int counterAdditional = 1;
+        private int id;
 
         private AdditionalSchedule(LocalDate dayOfStart, LocalTime timeOfFlight) {
             super();
+            this.id = counterAdditional++;
             this.dayOfStart = dayOfStart;
             this.timeOfFlight = timeOfFlight;
         }
-
-        public void addAdditionalSchedule() {
-            // TODO
-
-        }
-
-        public void deleteAdditionalSchedule() {
-            // TODO
-
-        }
-
 
         public LocalDate getDayOfStart() {
             return dayOfStart;
@@ -252,6 +282,10 @@ public class Flight extends ObjectPlusPlus {
 
         public LocalTime getTimeOfFlight() {
             return timeOfFlight;
+        }
+
+        public int getId() {
+            return id;
         }
 
         @Override

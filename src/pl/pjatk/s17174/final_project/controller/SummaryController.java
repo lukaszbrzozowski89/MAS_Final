@@ -4,6 +4,7 @@
 
 package pl.pjatk.s17174.final_project.controller;
 
+import com.sun.webkit.network.Util;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +19,10 @@ import pl.pjatk.s17174.final_project.enums.ReservationStatus;
 import pl.pjatk.s17174.final_project.model.MainModel;
 import pl.pjatk.s17174.final_project.utils.Utils;
 
+import javax.swing.plaf.RootPaneUI;
+import java.io.*;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class SummaryController implements Initializable {
@@ -35,29 +39,44 @@ public class SummaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Thread.sleep(3000);
             mainModel = MainModel.getInstance();
             mainModel.getReservation().setStatus(ReservationStatus.PAID);
-            mainModel.getPayment().setPaymentStatus(PaymentStatus.FINISHED);
             thanksTF.setWrapText(true);
             thanksTF.setAlignment(Pos.CENTER);
             thanksTF.setFont(Font.font(18));
-            thanksTF.setText(mainModel.getPassenger().toString() + mainModel.getPayment().toString() + mainModel.getReservation().toString() + mainModel.getFlight().toString());
+            thanksTF.setText(mainModel.getPassenger().getName() + "!\n" +
+                    "Dziękujemy za skorzystanie z naszych usług \n" +
+                    "Do zobaczenia na pokładzie\n\n" +
+                    "Poniżej możesz pobrać swoje dokumenty podróży"
+            );
         } catch (Exception e) {
             Utils.showAlertDialog(e.getMessage());
             e.printStackTrace();
         }
-//        mainModel.getPassenger().getName() + "!\n"+
-//                "Dziękujemy za skorzystanie z naszych usług \n" +
-//                "Do zobaczenia na pokładzie\n\n" +
-//                "Poniżej możesz pobrać swoje dokumnety podróży"
-//                    )
+//
     }
 
     @FXML
-    public void getDocsButton(ActionEvent event) throws Exception {
-        mainModel.getReservation().setStatus(ReservationStatus.FINISHED);
-        root = FXMLLoader.load(getClass().getResource("../resources/main_window.fxml"));
-        summaryAP.getChildren().setAll(root);
+    public void getDocsButton(ActionEvent event) {
+        try {
+            saveFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Utils.showAlertDialog("Błąd pobierania - spróbuj ponownie");
+            return;
+        }
+
+        try {
+            mainModel.getReservation().setStatus(ReservationStatus.FINISHED);
+            root = FXMLLoader.load(getClass().getResource("../resources/main_window.fxml"));
+            summaryAP.getChildren().setAll(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void saveFile() throws Exception {
+        mainModel.getReservation().generateReservationDocs();
     }
 }

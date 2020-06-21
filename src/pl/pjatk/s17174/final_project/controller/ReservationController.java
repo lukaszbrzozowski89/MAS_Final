@@ -73,9 +73,8 @@ public class ReservationController implements Initializable {
                 System.out.println(getAirportFromCB());
                 System.out.println(getAirportToCB());
                 mainModel.setFlight(flightList.get(fl.getId()));
-                mainModel.createReservation();
-            }
 
+            }
         }
         if (MainModel.getInstance().getFlight() == null) {
             Utils.showAlertDialog("Nie ma takiego lotu");
@@ -87,8 +86,10 @@ public class ReservationController implements Initializable {
         mainModel.setPassengerNumber(passengerNumberCB.getSelectionModel().getSelectedItem());
         ObjectPlusPlus[] obj = mainModel.getFlight().getLinks(Utils.flightInstanceClass);
         mainModel.setFlightInstance((Flight.FlightInstance) obj[0]);
-
-
+        for (int i = 0; i < Integer.parseInt(mainModel.getPassengerNumber()); i++) {
+            mainModel.createReservation();
+            System.out.println(mainModel.getReservation());
+        }
         flightSummaryPane = FXMLLoader.load(getClass().getResource("../resources/flight_window.fxml"));
         System.out.println(flightDatePicker.getValue());
         reservationPane.getChildren().setAll(flightSummaryPane);
