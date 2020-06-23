@@ -49,10 +49,6 @@ public class Reservation extends ObjectPlusPlus {
         return getStatus();
     }
 
-    public void checkPaymentStatus() {
-
-    }
-
     public void changePaymentStatus() {
         if (LocalTime.now().isAfter(getPaymentWaitTime().plusHours(24))) {
             cancelReservation();

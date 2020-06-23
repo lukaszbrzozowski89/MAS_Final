@@ -9,10 +9,10 @@ import pl.pjatk.s17174.final_project.enums.FlightType;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Arrays;
 import java.util.List;
 
-import static pl.pjatk.s17174.final_project.utils.Utils.*;
+import static pl.pjatk.s17174.final_project.utils.Utils.flightClass;
+import static pl.pjatk.s17174.final_project.utils.Utils.flightInstanceClass;
 
 /**
  * Class using to store data about Flight
@@ -174,6 +174,11 @@ public class Flight extends ObjectPlusPlus {
         public boolean checkSeatsAvailability() throws Exception {
             List<FlightInstance> linkedClasses = (List<FlightInstance>) ObjectPlus.getExtent(FlightInstance.class);
 
+//            ObjectPlusPlus[] plane = linkedClasses.get(0).getLinks(planeClass);
+//            ObjectPlusPlus[] reservation = linkedClasses.get(0).getLinks(reservationClass);
+//
+//            System.out.println(Arrays.toString(plane));
+//            System.out.println(Arrays.toString(reservation));
             return true;
         }
 
